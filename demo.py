@@ -1,3 +1,4 @@
+import random
 def get_response(user_input):
     responses = {
         "hi": ["Hello!", "Hi there!", "Hey! How can I help you?"],
@@ -5,7 +6,7 @@ def get_response(user_input):
         "what's your name": ["I'm a chatbot.", "I don't have a name, but you can call me Chatbot.", "You can call me Chatbot."],
         "bye": ["Goodbye!", "See you later!", "Have a great day!"]
     }
-    user_input = user_input.lower()
+    user_input = user_input.lower() 
     for key in responses:
         if key in user_input:
             return random.choice(responses[key])
