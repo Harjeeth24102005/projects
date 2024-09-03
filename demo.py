@@ -9,10 +9,7 @@ def get_response(user_input):
     for key in responses:
         if key in user_input:
             return random.choice(responses[key])
-    
-    # Default response if no match is found
     return "Sorry, I don't understand that."
-
 def main():
     print("Chatbot: Hello! How can I assist you today?")
     while True:
@@ -22,6 +19,5 @@ def main():
             break
         response = get_response(user_input)
         print(f"Chatbot: {response}")
-
 if __name__ == "__main__":
     main()
