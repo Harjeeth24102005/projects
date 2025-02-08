@@ -45,3 +45,4 @@ while True:
 webcam.release()
 # Close all OpenCV windows
 cv2.destroyAllWindows()
+
