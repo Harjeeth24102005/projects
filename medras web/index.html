@@ -1,0 +1,2806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medras Clinic - Premium Healthcare Services</title>
+    <meta name="description" content="Medras Clinic provides expert medical care with compassion and advanced technology. Your health is our priority.">
+    <meta name="keywords" content="clinic, healthcare, medical, doctors, pharmacy, diagnostics, treatment">
+    
+    <style>
+        /* Simple Icon Font using Unicode characters */
+        @font-face {
+            font-family: 'Icons';
+            src: local('Arial');
+        }
+        
+        .icon {
+            font-family: 'Icons';
+            display: inline-block;
+            font-weight: normal;
+            font-style: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .icon-heart:before { content: "❤"; font-size: 0.9em; }
+        .icon-pills:before { content: "💊"; }
+        .icon-stethoscope:before { content: "🩺"; }
+        .icon-microscope:before { content: "🔬"; }
+        .icon-ambulance:before { content: "🚑"; }
+        .icon-phone:before { content: "📞"; }
+        .icon-clock:before { content: "🕒"; }
+        .icon-location:before { content: "📍"; }
+        .icon-email:before { content: "✉"; }
+        .icon-arrow:before { content: "➜"; }
+        .icon-check:before { content: "✓"; }
+        .icon-menu:before { content: "☰"; }
+        .icon-close:before { content: "✕"; }
+        .icon-search:before { content: "🔍"; }
+        .icon-medical:before { content: "⚕"; }
+        .icon-prescription:before { content: "📋"; }
+        .icon-lab:before { content: "🧪"; }
+        .icon-doctor:before { content: "👨‍⚕"; }
+        .icon-shield:before { content: "🛡️"; }
+        .icon-doc:before { content: "📄"; }
+        .icon-dropdown:before { content: "↓"; font-size: 0.7em; margin-left: 5px; }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <style>
+        :root {
+            --primary-color: rgb(70, 130, 180);
+            --secondary-color: rgb(100, 149, 237);
+            --accent-color: rgb(220, 20, 60);
+            --accent-green: rgb(46, 125, 50);
+            --accent-purple: rgb(123, 31, 162);
+            --light-gray: rgb(240, 240, 240);
+            --medium-gray: rgb(150, 150, 150);
+            --dark-gray: rgb(50, 50, 50);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --white: rgb(255, 255, 255);
+            --dark-bg: rgb(40, 40, 40);
+            --button-gray: rgb(100, 100, 100);
+            --border-radius: 12px;
+            --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --transition-slow: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px; /* Default is usually 16px */
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Enhanced Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .btn-primary {
+            background-color: var(--button-gray);
+            color: var(--white);
+            border: 2px solid var(--button-gray);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            background-color: rgb(80, 80, 80);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--dark-bg);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.2);
+        }
+        
+        .btn-accent:hover {
+            background-color: rgb(200, 10, 50);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--dark-gray);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        #appointment .section-title h2,
+        #appointment .section-title p {
+            color: var(--white);
+        }
+
+/* Make the underline under the title white too */
+        #appointment .section-title h2:after {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Enhanced Parallax Effect */
+        .parallax-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .parallax-bg:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+            opacity: 0.15;
+            animation: subtleZoom 40s ease-in-out infinite alternate;
+        }
+        
+        @keyframes subtleZoom {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.08) rotate(0.5deg); }
+        }
+        
+        /* Specific parallax backgrounds */
+        #home.parallax-bg:before {
+            background-image: url('img1.png');
+        }
+        
+        #services.parallax-bg:before {
+            background-image: url('img2.png');
+        }
+        
+        #appointment.parallax-bg:before {
+            background-image: url('img3.png');
+        }
+        
+        /* White Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            padding: 20px 0;
+            transition: var(--transition-slow);
+            transform: translateY(0);
+        }
+        
+        .header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.97);
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 0 0;
+        }
+        
+        /* Logo Frame */
+        /* Logo Simple Style - REPLACED OLD LOGO FRAME */
+        .logo-simple {
+            display: flex;
+            align-items: flex-start; /* Changed from center to flex-start */
+            gap: 12px;
+            transition: var(--transition);
+            text-decoration: none;
+            min-width: 200px;
+            flex-shrink: 0;
+        }
+
+        .logo-simple:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            flex-shrink: 0; /* Prevent logo from shrinking */
+            transition: var(--transition);
+        }
+
+        .logo-simple:hover .logo-img {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.2;
+            min-width: 150px;
+        }
+
+        .logo-text .clinic-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark-gray);
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+    }
+
+        .logo-text .clinic-tagline {
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+            letter-spacing: 0.3px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+/* Update nav-container for better spacing */
+        .nav-container {
+            display: flex;
+            justify-content: space-between; /* CHANGE THIS */
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 0 0;
+        }
+
+/* Footer logo updates */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        .footer-logo .logo-text .clinic-name {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .footer-logo .logo-text .clinic-tagline {
+            color: rgba(255, 255, 255, 0.7);
+        }
+/* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .logo-text .clinic-name {
+                font-size: 1.3rem;
+            }
+    
+            .logo-text .clinic-tagline {
+                font-size: 0.7rem;
+          }
+    
+            .logo-img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text .clinic-name {
+                font-size: 1.2rem;
+            }
+
+            .logo-text .clinic-tagline {
+                font-size: 0.6rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+        }  
+
+        @media (max-width: 576px) {
+            .logo-simple {
+                gap: 8px;
+      }
+    
+            .logo-text .clinic-name {
+                font-size: 1rem;
+            }
+    
+            .logo-text .clinic-tagline {
+                font-size: 0.6rem;
+            }
+    
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        
+        /* Navigation */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            padding: 5px;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+        
+        .nav-toggle:hover {
+            color: var(--primary-color);
+            transform: scale(1.1) rotate(90deg);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            align-items: center;
+            margin-left: auto; /* Add this line */
+        }
+        
+        .nav-link {
+            padding: 12px 24px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(70, 130, 180, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover:before,
+        .nav-link.active:before {
+            width: 80%;
+        }
+        
+        /* Pharmacy Dropdown - Simple version like image */
+       .nav-item-pharmacy {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Pushes icon to right */
+            white-space: nowrap;
+            gap: 4px;
+            position: relative; /* Needed for dropdown positioning */
+        }
+            
+        .pharmacy-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px; /* Same as policies */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+            padding: 15px 0; /* Same padding */
+            border: 1px solid var(--light-gray);
+        }
+        
+        .nav-item-pharmacy:hover .pharmacy-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .pharmacy-dropdown li {
+            list-style: none;
+        }
+        
+        .pharmacy-dropdown a {
+            display: block;
+            padding: 12px 24px;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .pharmacy-dropdown a:hover {
+            background-color: rgba(70, 130, 180, 0.05);
+            color: var(--primary-color);
+            padding-left: 30px;
+        }
+        
+        /* Policies Dropdown - Simple like image */
+        .nav-item-dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+            padding: 15px 0;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            list-style: none;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 24px;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: rgba(70, 130, 180, 0.05);
+            color: var(--primary-color);
+            padding-left: 30px;
+        }
+        
+        /* Appointment button */
+        .appointment-btn {
+            background-color: var(--button-gray);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 12px 28px;
+            font-weight: 700;
+            margin-left: 15px;
+            border: 2px solid var(--button-gray);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .appointment-btn:hover {
+            background-color: rgb(80, 80, 80);
+            color: var(--white);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Dark Background Sections */
+        .bg-dark {
+            background-color: var(--dark-bg);
+            color: var(--white);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 200px 0 120px;
+            margin-top: 80px;
+            position: relative;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero-content h1 span {
+            color: var(--accent-color);
+            position: relative;
+        }
+        
+        .hero-content h1 span:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(220, 20, 60, 0.2);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+        
+        .stat-item {
+            text-align: center; /* Add this line */
+            padding: 25px 15px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+        }
+        
+        .stat-item:hover:before {
+            animation: shimmer 1.5s ease-in-out;
+        }
+        
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.08);
+            background-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            margin-bottom: 8px;
+            width: 100%;
+            min-height: 60px; /* Ensure consistent height */
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+        
+        .hero-image {
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-image img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            max-width: 100%;
+            height: auto;
+            transition: var(--transition-slow);
+            transform: perspective(1000px) rotateY(-10deg);
+        }
+        
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0deg) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes cardFlip {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(70, 130, 180, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(70, 130, 180, 0.6); }
+        }
+        
+        /* Services Section - Pharmacy, Clinic, Diagnostics */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .service-card:nth-child(1) {
+            border-top: 5px solid var(--accent-green);
+        }
+        
+        .service-card:nth-child(2) {
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .service-card:nth-child(3) {
+            border-top: 5px solid var(--accent-purple);
+        }
+        
+        .service-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(70, 130, 180, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover:before {
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: var(--white);
+            font-size: 48px;
+            transition: var(--transition);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .service-card:nth-child(1) .service-icon {
+            background: linear-gradient(135deg, var(--accent-green), rgb(56, 142, 60));
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.3);
+        }
+        
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg, var(--primary-color), rgb(90, 150, 200));
+            box-shadow: 0 10px 25px rgba(70, 130, 180, 0.3);
+        }
+        
+        .service-card:nth-child(3) .service-icon {
+            background: linear-gradient(135deg, var(--accent-purple), rgb(142, 36, 170));
+            box-shadow: 0 10px 25px rgba(123, 31, 162, 0.3);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg) scale(1.1);
+            animation: glow 2s infinite;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+        
+        .service-card p {
+            color: var(--medium-gray);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .service-features {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .service-features li {
+            margin-bottom: 12px;
+            color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            color: var(--accent-green);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Pharmacy Categories Cards Section */
+        .pharmacy-categories {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .category-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .category-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-green), var(--primary-color));
+        }
+        
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--white);
+            font-size: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-green), rgb(56, 142, 60));
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+        }
+        
+        .category-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+            line-height: 1.3;
+        }
+        
+        .category-list {
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+        
+        .category-list li {
+            margin-bottom: 10px;
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .category-list li:before {
+            content: "•";
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .category-btn {
+            margin-top: auto;
+            padding: 10px 20px;
+            background-color: rgba(70, 130, 180, 0.1);
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(70, 130, 180, 0.2);
+        }
+        
+        .category-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        /* Service Details Sections */
+        .service-details {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .service-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        .service-detail-grid:nth-child(even) .service-detail-image {
+            order: 2;
+        }
+        
+        .service-detail-grid:nth-child(even) .service-detail-content {
+            order: 1;
+        }
+        
+        .service-detail-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--dark-gray);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .service-detail-content h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        
+        .pharmacy-detail h3:after {
+            background-color: var(--accent-green);
+        }
+        
+        .clinic-detail h3:after {
+            background-color: var(--primary-color);
+        }
+        
+        .diagnostics-detail h3:after {
+            background-color: var(--accent-purple);
+        }
+        
+        .service-detail-content p {
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .service-detail-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            height: 400px;
+        }
+        
+        .service-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        
+        .service-detail-image:hover img {
+            transform: scale(1.08) rotate(2deg);
+        }
+        
+        .service-detail-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-detail-image:hover:after {
+            opacity: 1;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: var(--white);
+        }
+
+        .testimonials-section .section-title h2 {
+            color: var(--dark-gray);
+        }
+
+        .testimonials-section .section-title p {
+            color: var(--medium-gray);
+        }
+
+/* Make testimonial text dark */
+        .testimonial-text {
+            color: var(--dark-gray);
+        }
+
+        .author-info h5 {
+            color: var(--dark-gray);
+        }
+
+        .author-info p {
+            color: var(--medium-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition);
+        }
+        
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 6rem;
+            color: var(--light-gray);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+            line-height: 1;
+            opacity: 0.2;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            color: var(--dark-gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 4px solid var(--light-gray);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .author-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(70, 130, 180, 0.2), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover .author-img:before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+        
+        .testimonial-card:hover .author-img {
+            border-color: var(--primary-color);
+            transform: rotate(360deg);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h5 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+        }
+        
+        .author-info p {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section h2 {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .cta-buttons {
+            animation: fadeInUp 1s ease-out 0.4s both;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Appointment Section */
+        .appointment-grid {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;
+            gap: 0; /* Remove gap since we only have one column */
+        }
+
+        .appointment-info {
+            width: 100%;
+            max-width: 600px; /* Limit width and center */
+            margin: 0 auto;
+        }
+        
+        .appointment-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            animation: fadeInRight 1s ease-out;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .form-control, .form-select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--white);
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Info Items */
+        .info-item {
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 25px;
+            backdrop-filter: blur(15px);
+            animation: fadeInLeft 1s ease-out;
+            transition: var(--transition);
+        }
+        
+        .info-item:hover {
+            transform: translateX(15px) scale(1.03);
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-item-inner {
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            margin-right: 20px;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .info-item:hover .info-icon {
+            transform: scale(1.2) rotate(15deg);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .info-content h5 {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+        
+        .info-content p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 100px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-logo .logo-image-container {
+            border-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-logo .clinic-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        
+        .footer-logo .clinic-tagline {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links h5 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--white);
+            border-radius: 2px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 15px;
+            transform: translateX(0);
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li:hover {
+            transform: translateX(10px);
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links ul li a:before {
+            content: '→';
+            margin-right: 10px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li:hover a:before {
+            opacity: 1;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--white);
+            color: var(--dark-bg);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-info li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.6;
+        }
+        
+        .contact-info li .icon {
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.3rem;
+            min-width: 25px;
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+        
+        .footer-links.policies {
+            margin-top: 10px;
+        }
+        
+        .footer-links.policies ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .footer-links.policies ul li {
+            margin-bottom: 0;
+        }
+        
+        .footer-links.policies ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links.policies ul li a:hover {
+            color: var(--white);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-grid,
+            .appointment-grid,
+            .service-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-detail-grid:nth-child(even) .service-detail-image,
+            .service-detail-grid:nth-child(even) .service-detail-content {
+                order: initial;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 30px 20px;
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition-slow);
+                z-index: 999;
+                border-top: 1px solid var(--light-gray);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+                max-height: calc(100vh - 90px);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-link {
+                padding: 18px;
+                text-align: center;
+                border-bottom: 1px solid var(--light-gray);
+                color: var(--dark-gray);
+                width: 100%;
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            
+            .appointment-btn {
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%;
+            }
+            
+            .pharmacy-dropdown,
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                padding: 0;
+                border: none;
+                display: none;
+                margin-top: 10px;
+                margin-left: 20px;
+            }
+            
+            .nav-item-pharmacy:hover .pharmacy-dropdown,
+            .nav-item-dropdown:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .pharmacy-dropdown a,
+            .dropdown-menu a {
+                padding: 10px 20px;
+            }
+            
+            .services-grid,
+            .testimonials-grid,
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .service-detail-content h3 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            /* Disable parallax on mobile for performance */
+            .parallax-bg:before {
+                background-attachment: scroll;
+                animation: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .logo-text .clinic-name {
+                font-size: 1.5rem;
+            }
+            
+            .logo-image-container {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .service-detail-image {
+                height: 300px;
+            }
+            
+            .service-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+            
+            .info-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+            }
+            
+            .category-card {
+                padding: 25px 20px;
+            }
+            
+            .category-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- White Header -->
+    <header class="header">
+        <div class="nav-container">
+            <!-- Logo Frame -->
+            <a href="index.html" class="logo-simple">
+                <img src="Medras_logo.png" alt="Medras Clinic Logo" style="width: 150px;">
+              
+            </a>
+            
+            <button class="nav-toggle" id="navToggle">
+                <span class="icon icon-menu"></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item-pharmacy">
+                    <a href="#pharmacy-categories" class="nav-link">
+                        Pharmacy <span class="icon icon-dropdown"></span>
+                    </a>
+                    <!-- Simple Pharmacy Dropdown like Policies in the image -->
+                    <ul class="pharmacy-dropdown">
+                        <li><a href="#pharmacy-categories">Core Medicine Categories</a></li>
+                        <li><a href="#pharmacy-categories">Therapeutic Categories</a></li>
+                        <li><a href="#pharmacy-categories">Special Patient Care</a></li>
+                        <li><a href="#pharmacy-categories">Wellness & Preventive Care</a></li>
+                        <li><a href="#pharmacy-categories">Medical Supplies</a></li>
+                        <li><a href="#pharmacy-categories">Specialty Pharmacy</a></li>
+                        <li><a href="#pharmacy-categories">Health Monitoring</a></li>
+                        <li><a href="#pharmacy-categories">Personal & Daily Care</a></li>
+                    </ul>
+                </li>
+                <li><a href="#clinic-detail" class="nav-link">Clinic</a></li>
+                <li><a href="#diagnostics-detail" class="nav-link">Diagnostics</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Policies <span class="icon icon-dropdown"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#appointment" class="btn appointment-btn">Book Appointment</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section - Dark with Parallax -->
+    <section id="home" class="hero-section bg-dark parallax-bg">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Complete Healthcare <span>Solutions</span></h1>
+                    <p>At Medras Clinic, we provide integrated healthcare services with Pharmacy, Clinic, and Diagnostics all under one roof. Your health is our priority with compassion and cutting-edge technology.</p>
+                    <div class="hero-buttons">
+                        <a href="#appointment" class="btn btn-accent">Book Appointment</a>
+                        <a href="#services" class="btn btn-outline">Our Services</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="5000">0</span>
+                            <span class="stat-label">Medicines Available</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="25">0</span>
+                            <span class="stat-label">Expert Doctors</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="50">0</span>
+                            <span class="stat-label">Diagnostic Tests</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="img3.png" alt="Healthcare Services">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - White Background -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Services</h2>
+                <p>We offer comprehensive healthcare services with Pharmacy, Clinic, and Diagnostics all integrated for your convenience.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span class="icon icon-pills"></span>
+                    </div>
+                    <h3>Pharmacy</h3>
+                    <p>Full-service pharmacy with a wide range of medicines, health products, and expert pharmacists.</p>
+                    
+                    <ul class="service-features">
+                        <li>Pharmacy Services</li>
+                        <li>Wide Range of Medicines</li>
+                        <li>Generic Medicine Options</li>
+                        <li>Home Delivery Available</li>
+                        <li>Medicine Reminder Service</li>
+                        <li>Health Supplements</li>
+                    </ul>
+                    
+                    <a href="#pharmacy-categories" class="btn btn-primary">View All Categories</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span class="icon icon-stethoscope"></span>
+                    </div>
+                    <h3>Clinic</h3>
+                    <p>Expert medical consultation and treatment across various specialties with experienced doctors.</p>
+                    
+                    <ul class="service-features">
+                        <li>General Physician Consultation</li>
+                        <li>Specialist Doctors Available</li>
+                        <li>Minor Surgical Procedures</li>
+                        <li>Vaccination Services</li>
+                        <li>Chronic Disease Management</li>
+                        <li>Health Checkup Packages</li>
+                    </ul>
+                    
+                    <a href="#clinic-detail" class="btn btn-primary">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span class="icon icon-microscope"></span>
+                    </div>
+                    <h3>Diagnostics</h3>
+                    <p>Advanced diagnostic services with modern equipment and accurate reporting for precise diagnosis.</p>
+                    
+                    <ul class="service-features">
+                        <li>Complete Blood Tests</li>
+                        <li>Digital X-Ray & Ultrasound</li>
+                        <li>ECG & Cardiac Tests</li>
+                        <li>Advanced Lab Tests</li>
+                        <li>Same Day Reports</li>
+                        <li>Online Report Access</li>
+                    </ul>
+                    
+                    <a href="#diagnostics-detail" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pharmacy Categories Cards Section -->
+    <section id="pharmacy-categories" class="pharmacy-categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pharmacy Categories</h2>
+                <p>Browse our comprehensive range of pharmacy products organized by categories for easy access.</p>
+            </div>
+            
+            <div class="categories-grid">
+                <!-- Core Medicine Categories Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-pills"></span>
+                    </div>
+                    <h4>Core Medicine Categories</h4>
+                    <ul class="category-list">
+                        <li>Prescription Medicines</li>
+                        <li>Over-the-Counter (OTC) Medicines</li>
+                        <li>Chronic Care Medicines</li>
+                        <li>Acute Care Medicines</li>
+                        <li>Emergency Medicines</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+                
+                <!-- Therapeutic Categories Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-heart"></span>
+                    </div>
+                    <h4>Therapeutic Categories</h4>
+                    <ul class="category-list">
+                        <li>Cardiac Care</li>
+                        <li>Diabetic Care</li>
+                        <li>Respiratory Care</li>
+                        <li>Gastrointestinal Care</li>
+                        <li>Neurology & Psychiatry</li>
+                        <li>Pain Management</li>
+                        <li>Anti-Infectives</li>
+                        <li>Allergy & Immunology</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+                
+                <!-- Special Patient Care Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-doctor"></span>
+                    </div>
+                    <h4>Special Patient Care</h4>
+                    <ul class="category-list">
+                        <li>Pediatric Medicines</li>
+                        <li>Geriatric Medicines</li>
+                        <li>Women's Health</li>
+                        <li>Men's Health</li>
+                        <li>Pregnancy & Lactation Care</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+                
+                <!-- Wellness & Preventive Care Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-shield"></span>
+                    </div>
+                    <h4>Wellness & Preventive Care</h4>
+                    <ul class="category-list">
+                        <li>Vitamins & Minerals</li>
+                        <li>Immunity Boosters</li>
+                        <li>Nutritional Supplements</li>
+                        <li>Preventive Healthcare Products</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+                
+                <!-- Medical Supplies Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-medical"></span>
+                    </div>
+                    <h4>Medical Supplies</h4>
+                    <ul class="category-list">
+                        <li>Surgical & Dressing Supplies</li>
+                        <li>First Aid Products</li>
+                        <li>Medical Devices & Instruments</li>
+                        <li>Home Care Medical Equipment</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+                
+                <!-- Specialty Pharmacy Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-lab"></span>
+                    </div>
+                    <h4>Specialty Pharmacy</h4>
+                    <ul class="category-list">
+                        <li>Oncology Medicines</li>
+                        <li>Critical Care Medicines</li>
+                        <li>Hormonal Therapies</li>
+                        <li>Rare Disease Medicines</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+                
+                <!-- Health Monitoring Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-prescription"></span>
+                    </div>
+                    <h4>Health Monitoring</h4>
+                    <ul class="category-list">
+                        <li>Diabetes Monitoring Devices</li>
+                        <li>Blood Pressure Monitors</li>
+                        <li>Thermometers & Health Trackers</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+                
+                <!-- Personal & Daily Care Card -->
+                <div class="category-card">
+                    <div class="category-icon">
+                        <span class="icon icon-ambulance"></span>
+                    </div>
+                    <h4>Personal & Daily Care</h4>
+                    <ul class="category-list">
+                        <li>Skin Care</li>
+                        <li>Oral Care</li>
+                        <li>Baby Care</li>
+                        <li>Hygiene & Sanitation Products</li>
+                    </ul>
+                    <a href="#appointment" class="category-btn">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pharmacy Details Section -->
+    <section id="pharmacy-detail" class="service-details">
+        <div class="container">
+            <div class="service-detail-grid pharmacy-detail">
+                <div class="service-detail-content">
+                    <h3>Pharmacy Services</h3>
+                    <p>Our full-service pharmacy operates round the clock to ensure you have access to medicines whenever you need them. We maintain a comprehensive inventory of prescription and over-the-counter medications.</p>
+                    <p>Our experienced pharmacists are available for consultation to help you understand your medications, potential side effects, and proper usage. We also provide medication reviews and compliance packaging.</p>
+                    <p>Special services include generic medicine options that can save you up to 80% on prescription costs, home delivery for convenience, and automatic refill reminders.</p>
+                    <div class="hero-buttons" style="margin-top: 30px;">
+                        <a href="#appointment" class="btn btn-accent">Consult Pharmacist</a>
+                        <a href="tel:+917358432423" class="btn btn-outline" style="color: var(--dark-gray); border-color: var(--accent-green);">Call Pharmacy</a>
+                    </div>
+                </div>
+                <div class="service-detail-image">
+                    <img src="img6.png" alt="Pharmacy Services">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Details Section -->
+    <section id="clinic-detail" class="service-details" style="background-color: var(--white);">
+        <div class="container">
+            <div class="service-detail-grid clinic-detail">
+                <div class="service-detail-image">
+                    <img src="img7.png" alt="Clinic Services">
+                </div>
+                <div class="service-detail-content">
+                    <h3>Medical Clinic</h3>
+                    <p>Our clinic is staffed by experienced and qualified doctors across various specialties. We provide comprehensive medical care from routine checkups to management of chronic conditions.</p>
+                    <p>Services include general physician consultations, specialist referrals, minor surgical procedures, vaccination services, and health checkup packages tailored to different age groups and needs.</p>
+                    <p>We focus on preventive healthcare and offer regular health monitoring, lifestyle counseling, and chronic disease management programs to help you maintain optimal health.</p>
+                    <div class="hero-buttons" style="margin-top: 30px;">
+                        <a href="#appointment" class="btn btn-accent">Book Consultation</a>
+                        <a href="#appointment" class="btn btn-outline" style="color: var(--dark-gray); border-color: var(--primary-color);">Health Checkup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostics Details Section -->
+    <section id="diagnostics-detail" class="service-details" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="service-detail-grid diagnostics-detail">
+                <div class="service-detail-content">
+                    <h3>Diagnostic Center</h3>
+                    <p>Our state-of-the-art diagnostic center is equipped with modern technology for accurate and timely diagnosis. We offer a comprehensive range of laboratory tests and imaging services.</p>
+                    <p>Services include complete blood tests, digital X-ray, ultrasound, ECG, cardiac tests, advanced laboratory investigations, and specialized diagnostic procedures.</p>
+                    <p>We prioritize accuracy and timely reporting with most reports available on the same day. Patients can also access their reports online through our secure patient portal.</p>
+                    <div class="hero-buttons" style="margin-top: 30px;">
+                        <a href="#appointment" class="btn btn-accent">Book Diagnostic Test</a>
+                        <a href="#appointment" class="btn btn-outline" style="color: var(--dark-gray); border-color: var(--accent-purple);">View Test Packages</a>
+                    </div>
+                </div>
+                <div class="service-detail-image">
+                    <img src="img5.png" alt="Diagnostic Services">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - White Background -->
+    <section id="testimonials" class="section-padding testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Patient Testimonials</h2>
+                <p>Hear what our patients have to say about their experience at Medras Clinic.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"The pharmacy service saved me during an emergency. The pharmacist was knowledgeable and helped me get the right medication immediately."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="img10.png" alt="Arjun">
+                        </div>
+                        <div class="author-info">
+                            <h5>Arjun Sharma</h5>
+                            <p>Regular Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"The diagnostic center provided same-day reports which helped my doctor start treatment immediately. Very efficient service!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="img8.png" alt="Anitha">
+                        </div>
+                        <div class="author-info">
+                            <h5>Anitha Reddy</h5>
+                            <p>Diagnostics Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"Having pharmacy, clinic, and diagnostics in one place is so convenient. The doctors are excellent and the staff is very caring."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="img4.png" alt="Abirami">
+                        </div>
+                        <div class="author-info">
+                            <h5>Abirami Suresh</h5>
+                            <p>Clinic Patient</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Immediate Medical Assistance?</h2>
+            <p>Our integrated services ensure you get complete healthcare solutions in one place. Emergency services available.</p>
+            <div class="cta-buttons">
+                <a href="tel:+917358432423" class="btn btn-accent btn-lg">
+                    <span class="icon icon-phone"></span> Emergency: +91 73584 32423
+                </a>
+                <a href="#appointment" class="btn btn-outline btn-lg">
+                    <span class="icon icon-stethoscope"></span> Book Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section - Dark with Parallax -->
+    <section id="appointment" class="section-padding bg-dark parallax-bg">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book an Appointment</h2>
+                <p>Schedule your visit with our expert doctors or book diagnostic tests. Fill out the form and we'll get back to you shortly.</p>
+            </div>
+            
+            <div class="appointment-grid">
+                <div class="appointment-info">
+                    <div class="info-item">
+                        <div class="info-item-inner">
+                            <div class="info-icon">
+                                <span class="icon icon-phone"></span>
+                            </div>
+                            <div class="info-content">
+                                <h5>Pharmacy & Emergency</h5>
+                                <p>+91 73584 32423</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-item-inner">
+                            <div class="info-icon">
+                                <span class="icon icon-clock"></span>
+                            </div>
+                            <div class="info-content">
+                                <h5>Working Hours</h5>
+                                <p>Pharmacy</p>
+                                <p>Clinic: 8 AM - 9 PM</p>
+                                <p>Diagnostics: 7 AM - 8 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-item-inner">
+                            <div class="info-icon">
+                                <span class="icon icon-location"></span>
+                            </div>
+                            <div class="info-content">
+                                <h5>Our Location</h5>
+                                <p>No.20/6, Sengunthar Street</p>
+                                <p>Shenoy Nagar (East), Chennai</p>
+                                <p>Tamil Nadu, India - 600030</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-item-inner">
+                            <div class="info-icon">
+                                <span class="icon icon-email"></span>
+                            </div>
+                            <div class="info-content">
+                                <h5>Email Us</h5>
+                                <p>info@medrasclinic.com</p>
+                                <p>pharmacy@medrasclinic.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="Medras_logo.png" alt="Medras Clinic Logo" class="logo-img">
+                        <div class="logo-text">
+                            <span class="clinic-name">Medras Clinic</span>
+                            <span class="clinic-tagline">EXCELLENCE IN HEALTHCARE</span>
+                        </div>
+                    </div> 
+                    <p>Medras Clinic provides integrated healthcare services with Pharmacy, Clinic, and Diagnostics all under one roof. We're committed to your health with compassion and advanced technology.</p>
+                    <div class="social-links">
+                        <a href="#"><span class="icon icon-facebook">f</span></a>
+                        <a href="#"><span class="icon icon-twitter">t</span></a>
+                        <a href="#"><span class="icon icon-instagram">ig</span></a>
+                        <a href="#"><span class="icon icon-linkedin">in</span></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#pharmacy-categories">Pharmacy Categories</a></li>
+                        <li><a href="index.html#clinic-detail">Clinic</a></li>
+                        <li><a href="index.html#diagnostics-detail">Diagnostics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Our Services</h5>
+                    <ul>
+                        <li><a href="index.html#pharmacy-categories">Pharmacy Services</a></li>
+                        <li><a href="index.html#clinic-detail">Doctor Consultation</a></li>
+                        <li><a href="index.html#diagnostics-detail">Diagnostic Tests</a></li>
+                        <li><a href="index.html#appointment">Health Checkups</a></li>
+                        <li><a href="index.html#appointment">Emergency Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Contact Info</h5>
+                    <ul class="contact-info">
+                        <li>
+                            <span class="icon icon-location"></span>
+                            <span>
+                                No.20/6, Sengunthar Street<br>
+                                Shenoy Nagar (East)<br>
+                                Chennai, Tamil Nadu<br>
+                                India - 600030
+                            </span>
+                        </li>
+                        <li>
+                            <span class="icon icon-phone"></span>
+                            <span>+91 73584 32423</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-email"></span>
+                            <span>info@medrasclinic.com</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-clock"></span>
+                            <span>Pharmacy</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Policy Links in Footer -->
+            <div class="footer-links policies" style="grid-column: 1 / -1; margin-top: 40px;">
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Medras Clinic. All Rights Reserved. | Designed for better healthcare</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<span class="icon icon-close"></span>' : '<span class="icon icon-menu"></span>';
+            navToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            
+            // Add animation class
+            if (navMenu.classList.contains('active')) {
+                navMenu.style.animation = 'slideDown 0.5s ease forwards';
+            } else {
+                navMenu.style.animation = 'slideUp 0.5s ease forwards';
+            }
+        });
+        
+        // Add CSS animations for menu
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes slideUp {
+                from { opacity: 1; transform: translateY(0); }
+                to { opacity: 0; transform: translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link, .appointment-btn, .dropdown-menu a, .pharmacy-dropdown a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<span class="icon icon-menu"></span>';
+                navToggle.setAttribute('aria-expanded', 'false');
+                navMenu.style.animation = '';
+            });
+        });
+        
+        // Mobile dropdown toggle for pharmacy categories
+        if (window.innerWidth <= 768) {
+            // Mobile dropdown toggle for pharmacy
+            const pharmacyToggle = document.querySelector('.nav-item-pharmacy .nav-link');
+            const pharmacyDropdown = document.querySelector('.pharmacy-dropdown');
+            
+            pharmacyToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                pharmacyDropdown.style.display = pharmacyDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Mobile dropdown toggle for policies
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+        
+        // Enhanced Header scroll effects
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add scrolled class for shadow and padding changes
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Hide/show header on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                // Scrolling down
+                header.classList.add('hidden');
+            } else {
+                // Scrolling up
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Enhanced smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link with animation
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Don't mark policy links as active when clicking on main nav
+                    if (!this.classList.contains('dropdown-menu') && !this.classList.contains('pharmacy-dropdown')) {
+                        const mainNavLink = document.querySelector(`.nav-link[href="${targetId}"]`);
+                        if (mainNavLink) {
+                            mainNavLink.classList.add('active');
+                        }
+                    }
+                    
+                    // Add ripple effect to the clicked link
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                }
+            });
+        });
+        
+        // Enhanced Appointment form submission
+        
+        
+        // Add shake animation for form validation
+        const shakeStyle = document.createElement('style');
+        shakeStyle.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+                20%, 40%, 60%, 80% { transform: translateX(8px); }
+            }
+            .shake { animation: shake 0.6s ease-in-out; }
+        `;
+        document.head.appendChild(shakeStyle);
+        
+        // Confetti effect function
+        function createConfetti() {
+            const colors = ['#4682B4', '#DC143C', '#2E7D32', '#7B1FA2', '#FFFFFF'];
+            const confettiCount = 100;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.opacity = '0.9';
+                confetti.style.zIndex = '9999';
+                confetti.style.pointerEvents = 'none';
+                
+                document.body.appendChild(confetti);
+                
+                // Animation
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: 2000 + Math.random() * 2000,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+        
+        // Set minimum date for appointment to today
+        //const today = new Date().toISOString().split('T')[0];
+        //document.getElementById('date').setAttribute('min', today);
+        
+        // Enhanced stats animation with staggered effect
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number[data-count]');
+            stats.forEach((stat, index) => {
+                if (!stat.hasAttribute('data-count')) return;
+                
+                setTimeout(() => {
+                    const target = parseInt(stat.getAttribute('data-count'));
+                    let current = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if(current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                            // Add celebration effect
+                            stat.parentElement.classList.add('celebrate');
+                        }
+                        stat.textContent = current >= 1000 ? 
+                            Math.floor(current/1000) + 'K+' : 
+                            Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                    }, 20);
+                }, index * 300); // Stagger the animations
+            });
+        }
+        
+        // Enhanced scroll animations with Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    
+                    // Add delay for staggered animation
+                    const cards = entry.target.querySelectorAll('.service-card, .testimonial-card, .category-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animated');
+                        }, index * 150);
+                    });
+                    
+                    // Trigger stats animation for hero section
+                    if(entry.target.classList.contains('hero-section')) {
+                        const heroStats = entry.target.querySelector('.hero-stats');
+                        if(heroStats) animateStats();
+                    }
+                    
+                    // Add special animation for service detail sections
+                    if (entry.target.classList.contains('service-detail-grid')) {
+                        const image = entry.target.querySelector('.service-detail-image');
+                        const content = entry.target.querySelector('.service-detail-content');
+                        if (image) {
+                            image.style.animation = 'fadeInUp 1s ease-out forwards';
+                        }
+                        if (content) {
+                            content.style.animation = 'fadeInUp 1s ease-out 0.3s forwards';
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections for animation
+        document.querySelectorAll('#services, #pharmacy-categories, #pharmacy-detail, #clinic-detail, #diagnostics-detail, #testimonials, #appointment, .hero-section, .service-detail-grid').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Enhanced hover effects for all interactive elements
+        document.querySelectorAll('.btn, .service-card, .testimonial-card, .info-item, .category-card').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transform = 'translateY(-8px)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = '';
+            });
+        });
+        
+        // Enhanced parallax effect
+        window.addEventListener('scroll', function() {
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            const scrolled = window.pageYOffset;
+            
+            parallaxElements.forEach(element => {
+                const rate = scrolled * -0.3;
+                element.style.backgroundPosition = `center ${rate}px`;
+            });
+        });
+        
+        // Add loading animation for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+                this.style.transform = 'scale(1)';
+            });
+            
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.9)';
+            img.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        });
+        
+        // Initialize all animations on page load
+        window.addEventListener('load', function() {
+            // Fade in body with enhanced animation
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'translateY(20px)';
+            document.body.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                document.body.style.transform = 'translateY(0)';
+            }, 200);
+            
+            // Add floating animation to service icons
+            setInterval(() => {
+                document.querySelectorAll('.service-icon, .category-icon').forEach((icon, index) => {
+                    setTimeout(() => {
+                        icon.style.animation = 'pulse 2s ease-in-out';
+                        setTimeout(() => {
+                            icon.style.animation = '';
+                        }, 2000);
+                    }, index * 1000);
+                });
+            }, 8000);
+            
+            // Add typewriter effect to hero title (optional)
+            const heroTitle = document.querySelector('.hero-content h1');
+            if (heroTitle) {
+                const text = heroTitle.textContent;
+                heroTitle.textContent = '';
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        heroTitle.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    }
+                };
+                // Uncomment to enable typewriter effect
+                // setTimeout(typeWriter, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

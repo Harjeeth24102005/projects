@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Medras Clinic</title>
+    <meta name="description" content="Privacy Policy for Medras Clinic. Learn how we protect and handle your personal information.">
+    <meta name="keywords" content="privacy policy, data protection, healthcare privacy, medical data, confidentiality">
+    
+    <style>
+        /* Simple Icon Font using Unicode characters */
+        @font-face {
+            font-family: 'Icons';
+            src: local('Arial');
+        }
+        
+        .icon {
+            font-family: 'Icons';
+            display: inline-block;
+            font-weight: normal;
+            font-style: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .icon-heart:before { content: "❤"; font-size: 0.9em; }
+        .icon-pills:before { content: "💊"; }
+        .icon-stethoscope:before { content: "🩺"; }
+        .icon-microscope:before { content: "🔬"; }
+        .icon-ambulance:before { content: "🚑"; }
+        .icon-phone:before { content: "📞"; }
+        .icon-clock:before { content: "🕒"; }
+        .icon-location:before { content: "📍"; }
+        .icon-email:before { content: "✉"; }
+        .icon-arrow:before { content: "➜"; }
+        .icon-check:before { content: "✓"; }
+        .icon-menu:before { content: "☰"; }
+        .icon-close:before { content: "✕"; }
+        .icon-search:before { content: "🔍"; }
+        .icon-medical:before { content: "⚕"; }
+        .icon-prescription:before { content: "📋"; }
+        .icon-lab:before { content: "🧪"; }
+        .icon-doctor:before { content: "👨‍⚕"; }
+        .icon-shield:before { content: "🛡"; }
+        .icon-doc:before { content: "📄"; }
+        .icon-lock:before { content: "🔒"; }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <style>
+        :root {
+            --primary-color: rgb(70, 130, 180);
+            --secondary-color: rgb(100, 149, 237);
+            --accent-color: rgb(220, 20, 60);
+            --accent-green: rgb(46, 125, 50);
+            --accent-purple: rgb(123, 31, 162);
+            --light-gray: rgb(240, 240, 240);
+            --medium-gray: rgb(150, 150, 150);
+            --dark-gray: rgb(50, 50, 50);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --white: rgb(255, 255, 255);
+            --dark-bg: rgb(40, 40, 40);
+            --button-gray: rgb(100, 100, 100);
+            --border-radius: 12px;
+            --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --transition-slow: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Enhanced Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .btn-primary {
+            background-color: var(--button-gray);
+            color: var(--white);
+            border: 2px solid var(--button-gray);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            background-color: rgb(80, 80, 80);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--dark-bg);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.2);
+        }
+        
+        .btn-accent:hover {
+            background-color: rgb(200, 10, 50);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--dark-gray);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        /* White Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            padding: 20px 0;
+            transition: var(--transition-slow);
+            transform: translateY(0);
+        }
+        
+        .header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.97);
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Logo Frame */
+        .logo-frame {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+        }
+        
+        .logo-frame:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo-image-container {
+            width: 60px;
+            height: 60px;
+            background-color: var(--white);
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(70, 130, 180, 0.2);
+        }
+        
+        .logo-image-container:hover {
+            transform: rotate(10deg) scale(1.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 20px rgba(70, 130, 180, 0.3);
+        }
+        
+        .logo-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text .clinic-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark-gray);
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text .clinic-tagline {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        
+        /* Navigation */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            padding: 5px;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+        
+        .nav-toggle:hover {
+            color: var(--primary-color);
+            transform: scale(1.1) rotate(90deg);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            padding: 12px 24px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(70, 130, 180, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover:before,
+        .nav-link.active:before {
+            width: 80%;
+        }
+        
+        /* Policies Dropdown */
+        .nav-item-dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+            padding: 10px 0;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            list-style: none;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 24px;
+            color: var(--dark-gray);
+            transition: var(--transition);
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: rgba(70, 130, 180, 0.05);
+            color: var(--primary-color);
+            padding-left: 30px;
+        }
+        
+        /* Appointment button */
+        .appointment-btn {
+            background-color: var(--button-gray);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 12px 28px;
+            font-weight: 700;
+            margin-left: 15px;
+            border: 2px solid var(--button-gray);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .appointment-btn:hover {
+            background-color: rgb(80, 80, 80);
+            color: var(--white);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Privacy Policy Hero */
+        .policy-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));
+            color: var(--white);
+            padding: 180px 0 100px;
+            margin-top: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .policy-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .policy-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .policy-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .policy-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .policy-hero .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out both;
+            display: inline-block;
+        }
+        
+        /* Policy Content */
+        .policy-content {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .policy-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .policy-section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border-left: 5px solid var(--primary-color);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .policy-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .policy-section:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .policy-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .policy-section h2 .icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        
+        .policy-section p {
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .policy-section ul, .policy-section ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        .policy-section li {
+            margin-bottom: 12px;
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+        
+        .policy-section strong {
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+        
+        .highlight-box {
+            background-color: rgba(70, 130, 180, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            transition: var(--transition);
+        }
+        
+        .highlight-box:hover {
+            background-color: rgba(70, 130, 180, 0.08);
+            transform: translateX(10px);
+        }
+        
+        .highlight-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Update Section */
+        .update-section {
+            background-color: rgba(46, 125, 50, 0.05);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 60px;
+            border: 2px dashed var(--accent-green);
+        }
+        
+        .update-section h3 {
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 100px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-logo .logo-image-container {
+            border-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-logo .clinic-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        
+        .footer-logo .clinic-tagline {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links h5 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--white);
+            border-radius: 2px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 15px;
+            transform: translateX(0);
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li:hover {
+            transform: translateX(10px);
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links ul li a:before {
+            content: '→';
+            margin-right: 10px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li:hover a:before {
+            opacity: 1;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--white);
+            color: var(--dark-bg);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-info li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.6;
+        }
+        
+        .contact-info li .icon {
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.3rem;
+            min-width: 25px;
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+        
+        .footer-links.policies {
+            margin-top: 10px;
+        }
+        
+        .footer-links.policies ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .footer-links.policies ul li {
+            margin-bottom: 0;
+        }
+        
+        .footer-links.policies ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links.policies ul li a:hover {
+            color: var(--white);
+        }
+        
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .policy-hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 30px 20px;
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition-slow);
+                z-index: 999;
+                border-top: 1px solid var(--light-gray);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+                max-height: calc(100vh - 90px);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-link {
+                padding: 18px;
+                text-align: center;
+                border-bottom: 1px solid var(--light-gray);
+                color: var(--dark-gray);
+                width: 100%;
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            
+            .appointment-btn {
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                padding: 0;
+                border: none;
+                display: none;
+            }
+            
+            .nav-item-dropdown:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-menu li a {
+                padding-left: 40px;
+            }
+            
+            .policy-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .policy-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .policy-section {
+                padding: 30px 20px;
+            }
+            
+            .policy-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .policy-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .policy-hero {
+                padding: 150px 0 80px;
+            }
+            
+            .policy-content {
+                padding: 80px 0;
+            }
+            
+            .policy-section h2 {
+                font-size: 1.6rem;
+            }
+            
+            .policy-section {
+                padding: 25px 15px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .logo-text .clinic-name {
+                font-size: 1.5rem;
+            }
+            
+            .logo-image-container {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .policy-hero .icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- White Header -->
+    <header class="header">
+        <div class="nav-container">
+            <!-- Logo Frame -->
+            <a href="index.html" class="logo-frame">
+                <div class="logo-image-container">
+                    <img src="Medras_logo.png" alt="Medras Clinic Logo">
+                </div>
+                <div class="logo-text">
+                    <span class="clinic-name">Medras Clinic</span>
+                    <span class="clinic-tagline">EXCELLENCE IN HEALTHCARE</span>
+                </div>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle">
+                <span class="icon icon-menu"></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#pharmacy-detail" class="nav-link">Pharmacy</a></li>
+                <li><a href="index.html#clinic-detail" class="nav-link">Clinic</a></li>
+                <li><a href="index.html#diagnostics-detail" class="nav-link">Diagnostics</a></li>
+                <li><a href="index.html#appointment" class="nav-link">Appointment</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle active">
+                        Policies <span class="icon icon-arrow"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="privacy-policy.html" class="active">Privacy Policy</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="index.html#appointment" class="btn appointment-btn">Book Appointment</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Privacy Policy Hero -->
+    <section class="policy-hero">
+        <div class="container">
+            <div class="icon icon-lock"></div>
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. This policy explains how we collect, use, and protect your personal information at Medras Clinic.</p>
+            <p>Last Updated: January 2023</p>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="policy-content">
+        <div class="container policy-container">
+            <div class="policy-section">
+                <h2><span class="icon icon-shield"></span> Introduction</h2>
+                <p>At Medras Clinic, we are committed to protecting your privacy and ensuring the security of your personal and medical information. This Privacy Policy outlines our practices regarding the collection, use, and disclosure of your information when you use our services.</p>
+                <p>We comply with all applicable data protection laws and regulations, including the Indian Medical Council Regulations and other relevant healthcare privacy standards.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2><span class="icon icon-doc"></span> Information We Collect</h2>
+                <p>We collect various types of information to provide you with quality healthcare services:</p>
+                
+                <div class="highlight-box">
+                    <h4>Personal Information</h4>
+                    <ul>
+                        <li><strong>Basic Details:</strong> Name, date of birth, gender, contact information</li>
+                        <li><strong>Contact Information:</strong> Address, phone number, email address</li>
+                        <li><strong>Identification:</strong> Government ID numbers, photograph</li>
+                        <li><strong>Emergency Contact:</strong> Name and contact details of emergency contact person</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Medical Information</h4>
+                    <ul>
+                        <li><strong>Medical History:</strong> Past illnesses, surgeries, allergies</li>
+                        <li><strong>Current Health Status:</strong> Symptoms, diagnoses, treatment plans</li>
+                        <li><strong>Test Results:</strong> Laboratory, imaging, and diagnostic test results</li>
+                        <li><strong>Medication Details:</strong> Prescriptions, dosage, frequency</li>
+                        <li><strong>Insurance Information:</strong> Policy details, coverage information</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>Technical Information</h4>
+                    <ul>
+                        <li><strong>Website Usage:</strong> IP address, browser type, pages visited</li>
+                        <li><strong>Cookies:</strong> Information stored on your device to enhance user experience</li>
+                        <li><strong>Appointment Data:</strong> Booking history, preferences, feedback</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2><span class="icon icon-check"></span> How We Use Your Information</h2>
+                <p>We use your information for the following purposes:</p>
+                <ul>
+                    <li><strong>Healthcare Services:</strong> To provide medical diagnosis, treatment, and follow-up care</li>
+                    <li><strong>Appointment Management:</strong> To schedule, reschedule, or cancel appointments</li>
+                    <li><strong>Billing and Insurance:</strong> To process payments and insurance claims</li>
+                    <li><strong>Communication:</strong> To send appointment reminders, test results, and health information</li>
+                    <li><strong>Quality Improvement:</strong> To enhance our services and patient care standards</li>
+                    <li><strong>Legal Compliance:</strong> To comply with legal and regulatory requirements</li>
+                    <li><strong>Emergency Situations:</strong> To contact emergency services or family members when necessary</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2><span class="icon icon-lock"></span> Data Security</h2>
+                <p>We implement robust security measures to protect your information:</p>
+                <ul>
+                    <li><strong>Encryption:</strong> All sensitive data is encrypted both in transit and at rest</li>
+                    <li><strong>Access Controls:</strong> Strict access controls limit who can view your medical records</li>
+                    <li><strong>Secure Storage:</strong> Physical and electronic security measures protect data storage</li>
+                    <li><strong>Regular Audits:</strong> Regular security audits and vulnerability assessments</li>
+                    <li><strong>Staff Training:</strong> All staff undergo regular privacy and security training</li>
+                    <li><strong>Incident Response:</strong> Established procedures for handling data breaches</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h4>Your Rights</h4>
+                    <p>You have the right to:</p>
+                    <ul>
+                        <li>Access your personal and medical information</li>
+                        <li>Request corrections to inaccurate information</li>
+                        <li>Request deletion of your data (where legally permissible)</li>
+                        <li>Object to certain processing activities</li>
+                        <li>Request restriction of processing</li>
+                        <li>Receive your data in a portable format</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2><span class="icon icon-medical"></span> Information Sharing</h2>
+                <p>We may share your information with:</p>
+                <ul>
+                    <li><strong>Healthcare Providers:</strong> Doctors, specialists, and other medical professionals involved in your care</li>
+                    <li><strong>Insurance Companies:</strong> For processing claims and payments</li>
+                    <li><strong>Government Agencies:</strong> When required by law or for public health purposes</li>
+                    <li><strong>Service Providers:</strong> Third parties who assist in providing services (under strict confidentiality agreements)</li>
+                    <li><strong>Emergency Services:</strong> In life-threatening situations</li>
+                </ul>
+                <p><strong>Note:</strong> We never sell your personal information to third parties.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2><span class="icon icon-clock"></span> Data Retention</h2>
+                <p>We retain your information for as long as necessary to:</p>
+                <ul>
+                    <li>Provide healthcare services</li>
+                    <li>Comply with legal requirements (medical records are typically retained for 5+ years as per regulations)</li>
+                    <li>Resolve disputes</li>
+                    <li>Enforce our agreements</li>
+                </ul>
+                <p>After the retention period, we securely dispose of your information using appropriate methods.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2><span class="icon icon-email"></span> Contact Us</h2>
+                <p>If you have any questions or concerns about our Privacy Policy or how we handle your information, please contact us:</p>
+                <ul>
+                    <li><strong>Data Protection Officer:</strong> privacy@medrasclinic.com</li>
+                    <li><strong>Phone:</strong> +91 73584 32423 (Ask for Privacy Office)</li>
+                    <li><strong>Address:</strong> No.20/6, Sengunthar Street, Shenoy Nagar (East), Chennai, Tamil Nadu, India - 600030</li>
+                    <li><strong>Office Hours:</strong> Monday to Friday, 9:00 AM to 6:00 PM</li>
+                </ul>
+            </div>
+
+            <div class="update-section">
+                <h3>Policy Updates</h3>
+                <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. We will notify you of any significant changes through our website or direct communication. We encourage you to review this policy regularly.</p>
+                <p><strong>Last Updated:</strong> January 15, 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-image-container">
+                            <img src="Medras_logo.png" alt="Medras Clinic Logo">
+                        </div>
+                        <div class="logo-text">
+                            <span class="clinic-name">Medras Clinic</span>
+                            <span class="clinic-tagline">EXCELLENCE IN HEALTHCARE</span>
+                        </div>
+                    </div>
+                    <p>Medras Clinic provides integrated healthcare services with Pharmacy, Clinic, and Diagnostics all under one roof. We're committed to your health with compassion and advanced technology.</p>
+                    <div class="social-links">
+                        <a href="#"><span class="icon icon-facebook">f</span></a>
+                        <a href="#"><span class="icon icon-twitter">t</span></a>
+                        <a href="#"><span class="icon icon-instagram">ig</span></a>
+                        <a href="#"><span class="icon icon-linkedin">in</span></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#pharmacy-detail">Pharmacy</a></li>
+                        <li><a href="index.html#clinic-detail">Clinic</a></li>
+                        <li><a href="index.html#diagnostics-detail">Diagnostics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Our Services</h5>
+                    <ul>
+                        <li><a href="index.html#pharmacy-detail">24/7 Pharmacy</a></li>
+                        <li><a href="index.html#clinic-detail">Doctor Consultation</a></li>
+                        <li><a href="index.html#diagnostics-detail">Diagnostic Tests</a></li>
+                        <li><a href="index.html#appointment">Health Checkups</a></li>
+                        <li><a href="index.html#appointment">Emergency Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h5>Contact Info</h5>
+                    <ul class="contact-info">
+                        <li>
+                            <span class="icon icon-location"></span>
+                            <span>
+                                No.20/6, Sengunthar Street<br>
+                                Shenoy Nagar (East)<br>
+                                Chennai, Tamil Nadu<br>
+                                India - 600030
+                            </span>
+                        </li>
+                        <li>
+                            <span class="icon icon-phone"></span>
+                            <span>+91 73584 32423</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-email"></span>
+                            <span>info@medrasclinic.com</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-clock"></span>
+                            <span>Pharmacy: 24/7</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Policy Links in Footer -->
+            <div class="footer-links policies" style="grid-column: 1 / -1; margin-top: 40px;">
+                <ul>
+                    <li><a href="privacy-policy.html" class="active">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Medras Clinic. All Rights Reserved. | Designed for better healthcare</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<span class="icon icon-close"></span>' : '<span class="icon icon-menu"></span>';
+            navToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            
+            // Add animation class
+            if (navMenu.classList.contains('active')) {
+                navMenu.style.animation = 'slideDown 0.5s ease forwards';
+            } else {
+                navMenu.style.animation = 'slideUp 0.5s ease forwards';
+            }
+        });
+        
+        // Add CSS animations for menu
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes slideUp {
+                from { opacity: 1; transform: translateY(0); }
+                to { opacity: 0; transform: translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link, .appointment-btn, .dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<span class="icon icon-menu"></span>';
+                navToggle.setAttribute('aria-expanded', 'false');
+                navMenu.style.animation = '';
+                
+                // Mark current policy as active
+                if (link.getAttribute('href') === 'privacy-policy.html') {
+                    document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
+                    document.querySelector('.dropdown-toggle').classList.add('active');
+                }
+            });
+        });
+        
+        // Mobile dropdown toggle
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        
+        if (window.innerWidth <= 768) {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+        
+        // Enhanced Header scroll effects
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add scrolled class for shadow and padding changes
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Hide/show header on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                // Scrolling down
+                header.classList.add('hidden');
+            } else {
+                // Scrolling up
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Scroll animations for policy sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all policy sections
+        document.querySelectorAll('.policy-section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Add loading animation for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+                this.style.transform = 'scale(1)';
+            });
+            
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.9)';
+            img.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        });
+        
+        // Initialize all animations on page load
+        window.addEventListener('load', function() {
+            // Fade in body with enhanced animation
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'translateY(20px)';
+            document.body.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                document.body.style.transform = 'translateY(0)';
+            }, 200);
+            
+            // Add pulse animation to policy hero icon
+            const policyIcon = document.querySelector('.policy-hero .icon');
+            if (policyIcon) {
+                setInterval(() => {
+                    policyIcon.style.animation = 'pulse 2s ease-in-out';
+                    setTimeout(() => {
+                        policyIcon.style.animation = '';
+                    }, 2000);
+                }, 5000);
+            }
+        });
+        
+        // Highlight current policy in navigation
+        const currentPage = window.location.pathname.split('/').pop();
+        if (currentPage === 'privacy-policy.html') {
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            document.querySelector('.dropdown-toggle').classList.add('active');
+            document.querySelector('.dropdown-menu a[href="privacy-policy.html"]').classList.add('active');
+        }
+    </script>
+</body>
+</html>
