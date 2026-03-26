@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biriyani Bouquet - India's First Biriyani Bouquet</title>
+    <meta property="og:title" content="Biriyani Bouquet">
+    <meta property="og:description" content="India's first biriyani bouquet - A unique gift idea for celebrations">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+    <style>
+        :root {
+            --maroon: #8B0000;
+            --deep-maroon: #600000;
+            --gold: #FFD700;
+            --light-gold: #F4D03F;
+            --dark-bg: #1A0F0F;
+            --text-light: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg), var(--deep-maroon));
+            color: var(--gold);
+            overflow-x: hidden;
+            min-height: 100vh;
+            perspective: 1px;
+            transform-style: preserve-3d;
+        }
+
+        /* Enhanced Parallax Background */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(244, 208, 63, 0.05) 0%, transparent 50%);
+            transform: translateZ(-2px) scale(3);
+        }
+
+        .floating-spices {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .spice {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.8); }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.2); }
+            100% { transform: translateY(-100px) rotate(360deg) scale(0.8); }
+        }
+
+        /* Enhanced Navigation with Glass Morphism */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(139, 0, 0, 0.95);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+            border-bottom: 3px solid var(--gold);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-frame {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo-frame:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .logo-frame img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--gold);
+            color: var(--maroon);
+            border-color: var(--gold);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.8rem;
+            padding: 0.8rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cart-icon:hover {
+            background: var(--gold);
+            color: var(--maroon);
+            transform: scale(1.1) rotate(10deg);
+            border-color: var(--gold);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--gold);
+            color: var(--maroon);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Enhanced Parallax Sections */
+        .parallax-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 2rem 2rem;
+        }
+
+        .parallax-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .parallax-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transform: translateZ(-1px) scale(2);
+            z-index: 1;
+            opacity: 0.8;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(139, 0, 0, 0.4), rgba(96, 0, 0, 0.6));
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+            opacity: 0;
+            transform: translateY(50px);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.6rem;
+            color: var(--light-gold);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--maroon);
+            padding: 1.4rem 3rem;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 20px 45px rgba(255, 215, 0, 0.6);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(96,0,0,0.2));
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(139,0,0,0.8), rgba(96,0,0,0.7));
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            border: 3px solid var(--gold);
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(255,215,0,0.4);
+            border-color: var(--light-gold);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .feature-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .feature-description {
+            color: var(--light-gold);
+            line-height: 1.6;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(139,0,0,0.15), rgba(96,0,0,0.25));
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, rgba(139,0,0,0.7), rgba(96,0,0,0.6));
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            border: 2px solid var(--gold);
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255,215,0,0.3);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--maroon);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.5);
+        }
+
+        .step-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .step-description {
+            color: var(--light-gold);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Party Pack Showcase Section */
+        .party-pack-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(96,0,0,0.2));
+            text-align: center;
+        }
+
+        .party-pack-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .party-pack-description {
+            font-size: 1.4rem;
+            color: var(--light-gold);
+            margin-bottom: 4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .party-pack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .party-pack-card {
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(96,0,0,0.8));
+            border: 3px solid var(--gold);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+
+        .party-pack-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(255,215,0,0.3);
+            border-color: var(--light-gold);
+        }
+
+        .party-pack-image-frame {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            background: var(--gold);
+            padding: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .party-pack-image-frame:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(255,215,0,0.5);
+        }
+
+        .party-pack-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+        }
+
+        .party-pack-image-frame:hover .party-pack-image {
+            transform: scale(1.1);
+        }
+
+        .party-pack-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255,215,0,0.3);
+        }
+
+        .party-pack-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .party-pack-price {
+            font-size: 2rem;
+            color: var(--light-gold);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .party-pack-serves {
+            color: var(--light-gold);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .party-pack-items {
+            margin-bottom: 2rem;
+        }
+
+        .party-pack-item {
+            color: var(--light-gold);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .party-pack-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .party-pack-button {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--maroon);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .party-pack-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255,215,0,0.5);
+        }
+
+        .party-pack-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Enhanced Floating Animation */
+        @keyframes enhancedFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+
+        .enhanced-float {
+            animation: enhancedFloat 6s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            nav {
+                padding: 0 1rem;
+            }
+            
+            .features-grid, .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .feature-card, .step-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-button {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.1rem;
+            }
+
+            .party-pack-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .party-pack-card {
+                padding: 2rem;
+            }
+
+            .party-pack-image-frame {
+                width: 180px;
+                height: 180px;
+            }
+
+            .party-pack-title {
+                font-size: 2.5rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo-frame {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Background Elements -->
+    <div class="parallax-bg"></div>
+    <div class="floating-spices" id="floatingSpices"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <div class="logo-frame">
+                <!-- Add your logo image here -->
+                <div style="width: 100%; height: 100%; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--maroon); font-weight: bold; font-size: 0.8rem; text-align: center; padding: 5px;">BB Logo</div>
+            </div>
+            <div class="logo">Biriyani Bouquet</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/menu#partyPack">Party Pack</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="cart-icon" onclick="openCart()">
+            🛒
+            <div class="cart-count" id="cartCount">0</div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Parallax Sections -->
+    <section id="home" class="parallax-section">
+        <div class="parallax-bg-image" style="background-image: url('https://images.unsplash.com/photo-1563379091339-03246963d96f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content">
+            <h1 class="section-title">India's First Biriyani Bouquet</h1>
+            <p class="section-subtitle">A unique gift idea made with fresh biriyani arranged like a bouquet. Perfect for birthdays, anniversaries, surprises and celebrations.</p>
+            <a href="#partyPack" class="cta-button">Explore Our Bouquets</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="features-section">
+        <h2 class="section-title">Why Choose Biriyani Bouquet</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3 class="feature-title">Freshly Cooked</h3>
+                <p class="feature-description">Freshly cooked biryani for every order with guaranteed quality and taste.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3 class="feature-title">Free Delivery</h3>
+                <p class="feature-description">Enjoy complimentary delivery service for all your orders.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3 class="feature-title">Celebration Pack</h3>
+                <p class="feature-description">Complimentary celebration pack including cake, balloons & party poppers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💝</div>
+                <h3 class="feature-title">Custom Message Card</h3>
+                <p class="feature-description">Personalized message card to make your gift extra special.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎉</div>
+                <h3 class="feature-title">Perfect for Celebrations</h3>
+                <p class="feature-description">Ideal for all types of celebrations and special occasions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💐</div>
+                <h3 class="feature-title">Bouquet Style Packing</h3>
+                <p class="feature-description">Beautiful bouquet-style packing that makes your gift stand out.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3 class="feature-title">Guaranteed Freshness</h3>
+                <p class="feature-description">Pre-book 3 hours before delivery for guaranteed freshness.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Choose Your Bouquet</h3>
+                <p class="step-description">Select from our variety of biryani bouquet options</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Pre-book in Advance</h3>
+                <p class="step-description">Pre-book 3 hours before your desired delivery time</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Fresh Preparation</h3>
+                <p class="step-description">We prepare fresh and arrange in beautiful bouquet style</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Timely Delivery</h3>
+                <p class="step-description">Delivered hot & on time with free delivery service</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Party Pack Showcase Section -->
+    <section class="party-pack-section" id="partyPack">
+        <h2 class="party-pack-title">Special Party Packs</h2>
+        <p class="party-pack-description">Perfect for gatherings of 5-6 people - Complete meals with authentic flavors</p>
+        
+        <div class="party-pack-grid">
+            <!-- Chicken Combo -->
+            <div class="party-pack-card">
+                <div class="party-pack-image-frame">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03246963d96f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Chicken Combo" class="party-pack-image">
+                </div>
+                
+                <div class="party-pack-header">
+                    <h3 class="party-pack-name">Chicken Combo</h3>
+                    <div class="party-pack-price">₹1555</div>
+                    <div class="party-pack-serves">Serves 5-6 people</div>
+                </div>
+                
+                <div class="party-pack-items">
+                    <div class="party-pack-item">Chicken Biryani (2.5 kg)</div>
+                    <div class="party-pack-item">Choice of Soup</div>
+                    <div class="party-pack-item">Starter Selection</div>
+                    <div class="party-pack-item">Raita Varieties</div>
+                    <div class="party-pack-item">Dessert Choice</div>
+                    <div class="party-pack-item">Mouth Freshener</div>
+                    <div class="party-pack-item">Complimentary Items</div>
+                </div>
+                
+                <button class="party-pack-button" onclick="window.location.href='/menu#partyPack'">
+                    Customize & Order
+                </button>
+            </div>
+
+            <!-- Mutton Combo -->
+            <div class="party-pack-card">
+                <div class="party-pack-image-frame">
+                    <img src="https://images.unsplash.com/photo-1630919550274-8ad697c4e92c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Mutton Combo" class="party-pack-image">
+                </div>
+                
+                <div class="party-pack-header">
+                    <h3 class="party-pack-name">Mutton Combo</h3>
+                    <div class="party-pack-price">₹2055</div>
+                    <div class="party-pack-serves">Serves 5-6 people</div>
+                </div>
+                
+                <div class="party-pack-items">
+                    <div class="party-pack-item">Mutton Biryani (2.5 kg)</div>
+                    <div class="party-pack-item">Choice of Soup</div>
+                    <div class="party-pack-item">Starter Selection</div>
+                    <div class="party-pack-item">Raita Varieties</div>
+                    <div class="party-pack-item">Dessert Choice</div>
+                    <div class="party-pack-item">Mouth Freshener</div>
+                    <div class="party-pack-item">Complimentary Items</div>
+                </div>
+                
+                <button class="party-pack-button" onclick="window.location.href='/menu#partyPack'">
+                    Customize & Order
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax-section">
+        <div class="parallax-bg-image" style="background-image: url('https://images.unsplash.com/photo-1630919550274-8ad697c4e92c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content">
+            <h2 class="section-title">Traditional Dum Cooking</h2>
+            <p class="section-subtitle">Each biryani is slow-cooked using the authentic 'dum pukht' method, sealing in flavors and aromas for an unforgettable culinary experience.</p>
+            <a href="/about" class="cta-button">Our Story</a>
+        </div>
+    </section>
+
+    <section id="contact" class="parallax-section">
+        <div class="parallax-bg-image" style="background-image: url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content">
+            <h2 class="section-title">Visit Us Today</h2>
+            <p class="section-subtitle">Experience the unique taste of India's first biriyani bouquet</p>
+            <div style="color: var(--light-gold); margin: 2rem 0; font-size: 1.3rem;">
+                <p>📍 123 Spice Lane, Hyderabad</p>
+                <p>📞 +91 9585502005</p>
+                <p>🕒 11:00 AM - 11:00 PM, Daily</p>
+            </div>
+            <a href="/menu" class="cta-button">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="order-modal" id="cartModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">Your Cart</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <h3>Total: ₹<span id="cartTotal">0</span></h3>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="submit-btn" onclick="openOrderModal()">Place Order</button>
+                <button type="button" class="cancel-btn" onclick="closeCart()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        let cart = [];
+        let totalAmount = 0;
+
+        // Create enhanced floating spices
+        function createFloatingSpices() {
+            const spices = ['🍛', '🌶️', '🍚', '🍗', '🧅', '🧄', '🍋', '🌿', '🔥', '✨'];
+            const container = document.getElementById('floatingSpices');
+            
+            for (let i = 0; i < 25; i++) {
+                const spice = document.createElement('div');
+                spice.className = 'spice enhanced-float';
+                spice.innerHTML = spices[Math.floor(Math.random() * spices.length)];
+                spice.style.left = Math.random() * 100 + 'vw';
+                spice.style.animationDelay = Math.random() * 20 + 's';
+                spice.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+                spice.style.filter = `hue-rotate(${Math.random() * 360}deg) brightness(${0.8 + Math.random() * 0.4})`;
+                spice.style.opacity = 0.1 + Math.random() * 0.2;
+                container.appendChild(spice);
+            }
+        }
+
+        // Enhanced animations for sections
+        function animateSections() {
+            // Features animation with staggered entrance
+            gsap.utils.toArray('.feature-card').forEach((card, index) => {
+                gsap.fromTo(card, 
+                    { 
+                        opacity: 0, 
+                        y: 80, 
+                        scale: 0.8,
+                        rotationY: -30
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        rotationY: 0,
+                        duration: 1,
+                        delay: index * 0.1,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Steps animation with bounce effect
+            gsap.utils.toArray('.step-card').forEach((card, index) => {
+                gsap.fromTo(card, 
+                    { 
+                        opacity: 0, 
+                        y: 60,
+                        scale: 0.9
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.8,
+                        delay: index * 0.15,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Party pack animation with 3D effect
+            gsap.utils.toArray('.party-pack-card').forEach((card, index) => {
+                gsap.fromTo(card, 
+                    { 
+                        opacity: 0, 
+                        y: 100, 
+                        scale: 0.8,
+                        rotationY: -45
+                    },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        scale: 1,
+                        rotationY: 0,
+                        duration: 1.2,
+                        delay: index * 0.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Add enhanced hover effects for cards
+            const allCards = document.querySelectorAll('.feature-card, .step-card, .party-pack-card');
+            allCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, {
+                        y: -10,
+                        rotationY: 5,
+                        scale: 1.02,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        y: 0,
+                        rotationY: 0,
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        // Enhanced image hover animations
+        function enhanceImageHovers() {
+            const imageFrames = document.querySelectorAll('.party-pack-image-frame');
+            
+            imageFrames.forEach(frame => {
+                frame.addEventListener('mouseenter', () => {
+                    gsap.to(frame, {
+                        scale: 1.1,
+                        rotation: 5,
+                        duration: 0.4,
+                        ease: "back.out(1.7)"
+                    });
+                    
+                    const image = frame.querySelector('.party-pack-image');
+                    gsap.to(image, {
+                        scale: 1.1,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                });
+                
+                frame.addEventListener('mouseleave', () => {
+                    gsap.to(frame, {
+                        scale: 1,
+                        rotation: 0,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                    
+                    const image = frame.querySelector('.party-pack-image');
+                    gsap.to(image, {
+                        scale: 1,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        // Enhanced button interactions
+        function enhanceButtonInteractions() {
+            const buttons = document.querySelectorAll('.cta-button, .party-pack-button, .submit-btn, .cancel-btn');
+            
+            buttons.forEach(button => {
+                // Remove any existing moving shadow effects
+                button.style.overflow = 'hidden';
+                
+                button.addEventListener('mouseenter', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        y: -2,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    gsap.to(button, {
+                        scale: 1,
+                        y: 0,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+                
+                button.addEventListener('mousedown', () => {
+                    gsap.to(button, {
+                        scale: 0.95,
+                        duration: 0.1,
+                        ease: "power2.in"
+                    });
+                });
+                
+                button.addEventListener('mouseup', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        duration: 0.1,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        function openCart() {
+            updateCartDisplay();
+            document.getElementById('cartModal').style.display = 'block';
+            gsap.fromTo('#cartModal .modal-content', 
+                { scale: 0.8, opacity: 0, rotationY: -30 },
+                { scale: 1, opacity: 1, rotationY: 0, duration: 0.6, ease: "back.out(1.7)" }
+            );
+        }
+
+        function closeCart() {
+            gsap.to('#cartModal .modal-content', {
+                scale: 0.8,
+                opacity: 0,
+                rotationY: 30,
+                duration: 0.4,
+                ease: "back.in(1.7)",
+                onComplete: () => {
+                    document.getElementById('cartModal').style.display = 'none';
+                }
+            });
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.getElementById('cartCount');
+            
+            cartItems.innerHTML = '';
+            totalAmount = 0;
+            
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity}</p>
+                        <p>Price: ₹${item.price * item.quantity}</p>
+                    </div>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItems.appendChild(itemElement);
+                totalAmount += item.price * item.quantity;
+            });
+            
+            cartTotal.textContent = totalAmount;
+            cartCount.textContent = cart.length;
+            
+            // Enhanced cart count animation
+            gsap.to('.cart-count', {
+                scale: 1.5,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 2,
+                ease: "elastic.out(1, 0.5)"
+            });
+        }
+
+        function removeFromCart(index) {
+            gsap.to('.cart-item', {
+                opacity: 0,
+                x: -100,
+                duration: 0.3,
+                onComplete: () => {
+                    cart.splice(index, 1);
+                    updateCartDisplay();
+                }
+            });
+        }
+
+        function openOrderModal() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            closeCart();
+            document.getElementById('orderModal').style.display = 'block';
+            gsap.fromTo('#orderModal .modal-content', 
+                { scale: 0.8, opacity: 0, y: 50 },
+                { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }
+            );
+        }
+
+        function closeOrderModal() {
+            gsap.to('#orderModal .modal-content', {
+                scale: 0.8,
+                opacity: 0,
+                y: -50,
+                duration: 0.4,
+                ease: "back.in(1.7)",
+                onComplete: () => {
+                    document.getElementById('orderModal').style.display = 'none';
+                }
+            });
+        }
+
+        function submitOrder() {
+            const name = document.getElementById('customerName').value;
+            const address = document.getElementById('address').value;
+            const altNumber = document.getElementById('altNumber').value;
+
+            if (!name || !address || !altNumber) {
+                alert('Please fill all required fields to place your order.');
+                return;
+            }
+
+            // Generate order summary
+            let orderSummary = "🍛 BIRIYANI BOUQUET ORDER 🍛\n\n";
+            orderSummary += "ORDER DETAILS:\n\n";
+            
+            cart.forEach(item => {
+                orderSummary += `📋 ${item.name}\n`;
+                orderSummary += `   Quantity: ${item.quantity}\n`;
+                orderSummary += `   Price: ₹${item.price * item.quantity}\n\n`;
+            });
+            
+            orderSummary += `💰 TOTAL AMOUNT: ₹${totalAmount}\n\n`;
+            orderSummary += "CUSTOMER DETAILS:\n";
+            orderSummary += `👤 Name: ${name}\n`;
+            orderSummary += `📍 Address: ${address}\n`;
+            orderSummary += `📞 Contact: ${altNumber}\n`;
+            orderSummary += `\n🕒 Order Time: ${new Date().toLocaleString()}\n\n`;
+            orderSummary += "Thank you for choosing Biriyani Bouquet! 🍛\n";
+            orderSummary += "We'll contact you shortly to confirm your order.";
+
+            // Open WhatsApp
+            const whatsappMessage = encodeURIComponent(orderSummary);
+            const whatsappUrl = `https://wa.me/919585502005?text=${whatsappMessage}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Enhanced cart clearing animation
+            gsap.to('.cart-item', {
+                opacity: 0,
+                x: 100,
+                rotation: 10,
+                duration: 0.3,
+                stagger: 0.1,
+                onComplete: () => {
+                    cart = [];
+                    updateCartDisplay();
+                    closeOrderModal();
+                    
+                    // Success animation
+                    const successMsg = document.createElement('div');
+                    successMsg.textContent = 'Order Placed Successfully! 🎉';
+                    successMsg.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: var(--gold);
+                        color: var(--maroon);
+                        padding: 2rem 3rem;
+                        border-radius: 20px;
+                        font-weight: bold;
+                        font-size: 1.3rem;
+                        z-index: 10000;
+                        box-shadow: 0 20px 40px rgba(255,215,0,0.6);
+                    `;
+                    document.body.appendChild(successMsg);
+                    
+                    gsap.fromTo(successMsg, 
+                        { scale: 0, opacity: 0 },
+                        { 
+                            scale: 1, 
+                            opacity: 1, 
+                            duration: 0.6, 
+                            ease: "back.out(1.7)",
+                            onComplete: () => {
+                                setTimeout(() => {
+                                    gsap.to(successMsg, {
+                                        scale: 0,
+                                        opacity: 0,
+                                        duration: 0.4,
+                                        onComplete: () => {
+                                            document.body.removeChild(successMsg);
+                                        }
+                                    });
+                                }, 2000);
+                            }
+                        }
+                    );
+                }
+            });
+        }
+
+        // Enhanced GSAP animations
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingSpices();
+            animateSections();
+            enhanceImageHovers();
+            enhanceButtonInteractions();
+
+            // Enhanced navigation animation
+            gsap.from('nav', {
+                y: -100,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+            // Enhanced section animations with improved timing
+            gsap.utils.toArray('.parallax-section').forEach((section, index) => {
+                const title = section.querySelector('.section-title');
+                const subtitle = section.querySelector('.section-subtitle');
+                const button = section.querySelector('.cta-button');
+
+                // Create enhanced timeline with better sequencing
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse",
+                        markers: false
+                    }
+                });
+
+                // Enhanced title animation with bounce
+                tl.fromTo(title, 
+                    { 
+                        opacity: 0, 
+                        y: 80, 
+                        rotationX: -45,
+                        scale: 0.9
+                    },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        rotationX: 0,
+                        scale: 1,
+                        duration: 1.2, 
+                        ease: "back.out(1.7)" 
+                    }
+                )
+                // Enhanced subtitle animation with fade
+                .fromTo(subtitle,
+                    { 
+                        opacity: 0, 
+                        y: 50, 
+                        scale: 0.8
+                    },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        scale: 1,
+                        duration: 0.8, 
+                        ease: "power2.out" 
+                    },
+                    "-=0.8"
+                )
+                // Enhanced button animation with elastic effect
+                .fromTo(button,
+                    { 
+                        opacity: 0, 
+                        y: 30, 
+                        scale: 0.7
+                    },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        scale: 1,
+                        duration: 0.6, 
+                        ease: "elastic.out(1, 0.5)" 
+                    },
+                    "-=0.4"
+                );
+            });
+
+            // Enhanced parallax for background images
+            gsap.utils.toArray('.parallax-bg-image').forEach((bg, index) => {
+                gsap.to(bg, {
+                    yPercent: -40,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: bg.parentElement,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1.5
+                    }
+                });
+            });
+        });
+
+        // Enhanced cursor effects with smoother movement
+        document.addEventListener('mousemove', (e) => {
+            const spices = document.querySelectorAll('.spice');
+            spices.forEach((spice, index) => {
+                const speed = (index + 1) * 0.0001;
+                const x = (e.clientX * speed);
+                const y = (e.clientY * speed);
+                gsap.to(spice, {
+                    x: x,
+                    y: y,
+                    duration: 2,
+                    ease: "power1.out"
+                });
+            });
+        });
+
+        // Set active navigation link
+        function setActiveNavLink() {
+            const currentPage = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === '/' && link.getAttribute('href') === '/') ||
+                    (currentPage === '/menu' && link.getAttribute('href') === '/menu')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize active nav link
+        setActiveNavLink();
+    </script>
+
+    <!-- Order Modal -->
+    <div class="order-modal" id="orderModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">Complete Your Order</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="customerName">Full Name *</label>
+                    <input type="text" id="customerName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address *</label>
+                    <textarea id="address" rows="3" required placeholder="Enter your complete delivery address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="altNumber">Contact Number *</label>
+                    <input type="tel" id="altNumber" required placeholder="Enter your WhatsApp number">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="submit-btn" onclick="submitOrder()">Submit & Share to WhatsApp</button>
+                    <button type="button" class="cancel-btn" onclick="closeOrderModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            backdrop-filter: blur(15px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--maroon), var(--deep-maroon));
+            padding: 3rem;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 3px solid var(--gold);
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.1);
+            color: var(--gold);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            transform: scale(1.02);
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: var(--light-gold);
+            opacity: 0.7;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--maroon);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .cancel-btn {
+            background: transparent;
+            color: var(--gold);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--gold);
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn:hover {
+            background: var(--gold);
+            color: var(--maroon);
+            transform: translateY(-3px);
+        }
+
+        .cancel-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 2px solid rgba(255,215,0,0.3);
+            margin-bottom: 1rem;
+            background: rgba(255,215,0,0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background: rgba(255,215,0,0.2);
+            transform: translateX(10px);
+        }
+
+        .cart-item-details h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .cart-item-details p {
+            color: var(--light-gold);
+            margin: 0.3rem 0;
+            font-size: 1.1rem;
+        }
+
+        .cart-total {
+            text-align: center;
+            margin: 2.5rem 0;
+            padding-top: 1.5rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .cart-total h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</body>
+</html>

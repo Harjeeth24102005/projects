@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Biriyani Bouquet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --maroon: #8B0000;
+            --deep-maroon: #600000;
+            --gold: #FFD700;
+            --light-gold: #F4D03F;
+            --dark-bg: #1A0F0F;
+            --text-light: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg), var(--deep-maroon));
+            color: var(--gold);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Enhanced Navigation */
+        nav {
+            background: rgba(139, 0, 0, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-frame {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo-frame:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .logo-frame img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--gold);
+            color: var(--maroon);
+            border-color: var(--gold);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.8rem;
+            padding: 0.8rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cart-icon:hover {
+            background: var(--gold);
+            color: var(--maroon);
+            transform: scale(1.1) rotate(10deg);
+            border-color: var(--gold);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--gold);
+            color: var(--maroon);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Enhanced Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 15, 15, 0.8), rgba(139, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1563379091339-03246963d96f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transform: scale(1.1);
+            filter: brightness(0.7) contrast(1.2);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            color: var(--light-gold);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Enhanced Story Sections */
+        .story-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .story-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-text {
+            padding: 3rem;
+        }
+
+        .story-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 3rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .story-description {
+            font-size: 1.5rem;
+            color: var(--light-gold);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .story-image {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transform: rotate(-3deg);
+            transition: all 0.4s ease;
+            border: 3px solid var(--gold);
+        }
+
+        .story-image:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 35px 70px rgba(255,215,0,0.3);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            transition: all 0.4s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139,0,0,0.3), rgba(255,215,0,0.2));
+            pointer-events: none;
+        }
+
+        /* Alternate layout for even sections */
+        .story-section:nth-child(even) .story-content {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .story-section:nth-child(even) .story-text {
+            order: 2;
+        }
+
+        .story-section:nth-child(even) .story-image {
+            transform: rotate(3deg);
+        }
+
+        .story-section:nth-child(even) .story-image:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        /* Enhanced Features Section */
+        .features-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(139,0,0,0.15), rgba(96,0,0,0.25));
+        }
+
+        .features-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 6rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(139,0,0,0.4), rgba(96,0,0,0.5));
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            border: 3px solid rgba(255,215,0,0.4);
+            text-align: center;
+            backdrop-filter: blur(15px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(255,215,0,0.3);
+        }
+
+        .feature-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.5));
+            display: block;
+        }
+
+        .feature-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .feature-card-desc {
+            color: var(--light-gold);
+            line-height: 1.7;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Enhanced Contact Section */
+        .contact-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(96,0,0,0.2));
+        }
+
+        .contact-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 4rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(139,0,0,0.4), rgba(96,0,0,0.5));
+            padding: 3.5rem 2.5rem;
+            border-radius: 25px;
+            border: 3px solid rgba(255,215,0,0.4);
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(255,215,0,0.3);
+        }
+
+        .contact-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .contact-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .contact-info {
+            color: var(--light-gold);
+            font-size: 1.4rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Enhanced Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--maroon);
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 15px 35px rgba(255,215,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-button:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 25px 50px rgba(255,215,0,0.6);
+        }
+
+        .action-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--gold);
+            border: 3px solid var(--gold);
+        }
+
+        .secondary-button:hover {
+            background: var(--gold);
+            color: var(--maroon);
+        }
+
+        /* Enhanced Floating Elements */
+        .floating-spice {
+            position: fixed;
+            font-size: 2.5rem;
+            opacity: 0.1;
+            animation: floatSpice 25s infinite linear;
+            pointer-events: none;
+            z-index: -1;
+            filter: brightness(0.8) contrast(1.2);
+        }
+
+        @keyframes floatSpice {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .story-section:nth-child(even) .story-text {
+                order: 1;
+            }
+
+            .story-title {
+                font-size: 2.5rem;
+            }
+
+            .story-description {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .feature-card, .contact-card {
+                padding: 2.5rem 2rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo-frame {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Spices -->
+    <div class="floating-spices" id="floatingSpices"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <div class="logo-frame">
+                <!-- Add your logo image here -->
+                <div style="width: 100%; height: 100%; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--maroon); font-weight: bold; font-size: 0.8rem; text-align: center; padding: 5px;">BB Logo</div>
+            </div>
+            <div class="logo">Biriyani Bouquet</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/menu#partyPack">Party Pack</a></li>
+            <li><a href="/menu#singlePack">Single Serve</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/about" class="active">About</a></li>
+        </ul>
+        <div class="cart-icon" onclick="openCart()">
+            🛒
+            <div class="cart-count" id="cartCount">0</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Biriyani Bouquet</h1>
+            <p class="hero-subtitle">Where tradition meets creativity in the most delicious way. We specialize in crafting unique biriyani bouquet combos—a fresh, elegant, and flavour-packed alternative to ordinary gifts.</p>
+            <div class="action-buttons">
+                <a href="/menu" class="action-button">Explore Our Bouquets</a>
+                <a href="#story" class="action-button secondary-button">Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Sections -->
+    <section class="story-section" id="story">
+        <div class="story-content">
+            <div class="story-text">
+                <h2 class="story-title">About Biriyani Bouquet</h2>
+                <p class="story-description">
+                    Welcome to Biriyani Bouquet, where tradition meets creativity in the most delicious way. We specialize in crafting unique biriyani bouquet combos—a fresh, elegant, and flavour-packed alternative to ordinary gifts and party menus. Whether it's a birthday, anniversary, office celebration, or a surprise for a foodie friend, our biriyani bouquets add joy, aroma, and an unforgettable twist to any occasion.
+                </p>
+                <p class="story-description">
+                    At Biriyani Bouquet, every order is prepared with care using premium ingredients, authentic spices, and perfect cooking techniques. Our goal is simple: To make every celebration more meaningful, memorable, and irresistibly tasty.
+                </p>
+                <p class="story-description">
+                    We believe food is not just to be eaten—it should be experienced, shared, and celebrated. And nothing captures that spirit better than a bouquet filled with love and biriyani.
+                </p>
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1630919550274-8ad697c4e92c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Traditional Biryani Preparation">
+                <div class="image-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="story-content">
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Premium Biryani Ingredients">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="story-text">
+                <h2 class="story-title">Our Story</h2>
+                <p class="story-description">
+                    Biriyani Bouquet began with a simple idea in the kitchen of Kumar, a passionate cook from Ambur who always believed that biriyani has the power to bring people together. Kumar grew up watching his family prepare large pots of fragrant biriyani during festivals and weddings. To him, biriyani was more than a dish—it was a way of expressing warmth, hospitality, and care.
+                </p>
+                <p class="story-description">
+                    One day, while preparing biriyani for a friend's birthday, Kumar wished he could gift something meaningful instead of just a box of sweets. That's when inspiration struck. "What if biriyani itself could be the gift?"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <h2 class="features-title">Our Promise</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💝</div>
+                <h3 class="feature-card-title">Serve Memories</h3>
+                <p class="feature-card-desc">At Biriyani Bouquet, we don't just serve food—we serve memories. Every aromatic grain, every perfectly spiced piece of meat, every careful layer is crafted with love and precision.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👑</div>
+                <h3 class="feature-card-title">Authentic Tradition</h3>
+                <p class="feature-card-desc">We promise to honor the traditions passed down through generations while creating new moments of joy around every table we serve.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌿</div>
+                <h3 class="feature-card-title">Premium Quality</h3>
+                <p class="feature-card-desc">Using only the finest ingredients and authentic spices to ensure every bouquet is a masterpiece of flavor and aroma.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3 class="feature-card-title">Creative Presentation</h3>
+                <p class="feature-card-desc">He crafted the very first Biriyani Bouquet—a beautifully arranged combination styled like a floral bouquet that quickly became the star of every celebration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Story Section -->
+    <section class="story-section">
+        <div class="story-content">
+            <div class="story-text">
+                <h2 class="story-title">The Birth of a Concept</h2>
+                <p class="story-description">
+                    He crafted the very first Biriyani Bouquet—a beautifully arranged combination of biriyani bowls, kebabs, mini-meals, and garnishes styled like a floral bouquet. It quickly became the star of the celebration. People loved the idea, took photos, shared it online, and soon the concept went viral in the local food circles.
+                </p>
+                <p class="story-description">
+                    Encouraged by the response, Kumar turned his passion into a brand—Biriyani Bouquet, a place where flavour, creativity, and celebration come together.
+                </p>
+                <p class="story-description">
+                    Today, the brand continues to grow, delivering joy one bouquet at a time. From that first experimental bouquet to becoming India's first biriyani bouquet service, our journey has been filled with the same love and care that goes into every dish we create.
+                </p>
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Served Biryani">
+                <div class="image-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2 class="contact-title">Visit Us Today</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3 class="contact-card-title">Our Location</h3>
+                <p class="contact-info">123 Spice Lane<br>Hyderabad, Telangana<br>500001</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3 class="contact-card-title">Contact Us</h3>
+                <p class="contact-info">+91 9585502005<br>hello@biriyanibouquet.com<br>Daily: 11AM - 11PM</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🚚</div>
+                <h3 class="contact-card-title">Home Delivery</h3>
+                <p class="contact-info">Free delivery within<br>5km radius<br>Quick 30-min service</p>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <a href="/menu" class="action-button">Order Now</a>
+            <a href="/" class="action-button secondary-button">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="order-modal" id="cartModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">Your Cart</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <h3>Total: ₹<span id="cartTotal">0</span></h3>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="submit-btn" onclick="openOrderModal()">Place Order</button>
+                <button type="button" class="cancel-btn" onclick="closeCart()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="order-modal" id="orderModal" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">Complete Your Order</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="customerName">Full Name *</label>
+                    <input type="text" id="customerName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address *</label>
+                    <textarea id="address" rows="3" required placeholder="Enter your complete delivery address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="altNumber">Contact Number *</label>
+                    <input type="tel" id="altNumber" required placeholder="Enter your WhatsApp number">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="submit-btn" onclick="submitOrder()">Submit & Share to WhatsApp</button>
+                    <button type="button" class="cancel-btn" onclick="closeOrderModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        let cart = [];
+        let totalAmount = 0;
+
+        // Create enhanced floating spices
+        function createFloatingSpices() {
+            const spices = ['🍛', '🌶️', '🍚', '🍗', '🧅', '🧄', '🍋', '🌿', '🔥'];
+            const container = document.getElementById('floatingSpices');
+            
+            for (let i = 0; i < 20; i++) {
+                const spice = document.createElement('div');
+                spice.className = 'floating-spice';
+                spice.innerHTML = spices[Math.floor(Math.random() * spices.length)];
+                spice.style.left = Math.random() * 100 + 'vw';
+                spice.style.animationDelay = Math.random() * 25 + 's';
+                spice.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+                spice.style.filter = `hue-rotate(${Math.random() * 360}deg) brightness(${0.7 + Math.random() * 0.4})`;
+                container.appendChild(spice);
+            }
+        }
+
+        function openCart() {
+            updateCartDisplay();
+            document.getElementById('cartModal').style.display = 'block';
+            gsap.fromTo('#cartModal .modal-content', 
+                { scale: 0.8, opacity: 0, rotationY: -30 },
+                { scale: 1, opacity: 1, rotationY: 0, duration: 0.6, ease: "back.out(1.7)" }
+            );
+        }
+
+        function closeCart() {
+            gsap.to('#cartModal .modal-content', {
+                scale: 0.8,
+                opacity: 0,
+                rotationY: 30,
+                duration: 0.4,
+                ease: "back.in(1.7)",
+                onComplete: () => {
+                    document.getElementById('cartModal').style.display = 'none';
+                }
+            });
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.getElementById('cartCount');
+            
+            cartItems.innerHTML = '';
+            totalAmount = 0;
+            
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity}</p>
+                        <p>Price: ₹${item.price * item.quantity}</p>
+                    </div>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItems.appendChild(itemElement);
+                totalAmount += item.price * item.quantity;
+            });
+            
+            cartTotal.textContent = totalAmount;
+            cartCount.textContent = cart.length;
+            
+            // Enhanced cart count animation
+            gsap.to('.cart-count', {
+                scale: 1.5,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 2,
+                ease: "elastic.out(1, 0.5)"
+            });
+        }
+
+        function removeFromCart(index) {
+            gsap.to('.cart-item', {
+                opacity: 0,
+                x: -100,
+                duration: 0.3,
+                onComplete: () => {
+                    cart.splice(index, 1);
+                    updateCartDisplay();
+                }
+            });
+        }
+
+        function openOrderModal() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            closeCart();
+            document.getElementById('orderModal').style.display = 'block';
+            gsap.fromTo('#orderModal .modal-content', 
+                { scale: 0.8, opacity: 0, y: 50 },
+                { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }
+            );
+        }
+
+        function closeOrderModal() {
+            gsap.to('#orderModal .modal-content', {
+                scale: 0.8,
+                opacity: 0,
+                y: -50,
+                duration: 0.4,
+                ease: "back.in(1.7)",
+                onComplete: () => {
+                    document.getElementById('orderModal').style.display = 'none';
+                }
+            });
+        }
+
+        function submitOrder() {
+            const name = document.getElementById('customerName').value;
+            const address = document.getElementById('address').value;
+            const altNumber = document.getElementById('altNumber').value;
+
+            if (!name || !address || !altNumber) {
+                alert('Please fill all required fields to place your order.');
+                return;
+            }
+
+            // Generate order summary
+            let orderSummary = "🍛 BIRIYANI BOUQUET ORDER 🍛\n\n";
+            orderSummary += "ORDER DETAILS:\n\n";
+            
+            cart.forEach(item => {
+                orderSummary += `📋 ${item.name}\n`;
+                orderSummary += `   Quantity: ${item.quantity}\n`;
+                orderSummary += `   Price: ₹${item.price * item.quantity}\n\n`;
+            });
+            
+            orderSummary += `💰 TOTAL AMOUNT: ₹${totalAmount}\n\n`;
+            orderSummary += "CUSTOMER DETAILS:\n";
+            orderSummary += `👤 Name: ${name}\n`;
+            orderSummary += `📍 Address: ${address}\n`;
+            orderSummary += `📞 Contact: ${altNumber}\n`;
+            orderSummary += `\n🕒 Order Time: ${new Date().toLocaleString()}\n\n`;
+            orderSummary += "Thank you for choosing Biriyani Bouquet! 🍛\n";
+            orderSummary += "We'll contact you shortly to confirm your order.";
+
+            // Open WhatsApp
+            const whatsappMessage = encodeURIComponent(orderSummary);
+            const whatsappUrl = `https://wa.me/919585502005?text=${whatsappMessage}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Clear cart with animation
+            gsap.to('.cart-item', {
+                opacity: 0,
+                x: 100,
+                duration: 0.3,
+                stagger: 0.1,
+                onComplete: () => {
+                    cart = [];
+                    updateCartDisplay();
+                    closeOrderModal();
+                }
+            });
+        }
+
+        // Initialize enhanced animations
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingSpices();
+
+            // Enhanced hero section animation
+            gsap.to('.hero-content', {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out",
+                delay: 0.5
+            });
+
+            // Enhanced story sections animations
+            gsap.utils.toArray('.story-section').forEach((section, index) => {
+                gsap.fromTo(section, 
+                    { 
+                        opacity: 0, 
+                        y: 100,
+                        scale: 0.95
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+
+                const text = section.querySelector('.story-text');
+                const image = section.querySelector('.story-image');
+
+                gsap.fromTo(text, 
+                    { opacity: 0, x: -80, y: 50, rotationY: -20 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        rotationY: 0,
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 70%",
+                            end: "bottom 30%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+
+                gsap.fromTo(image, 
+                    { opacity: 0, x: 80, y: 50, rotationY: 20, rotation: index % 2 === 0 ? -10 : 10 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        rotationY: 0,
+                        rotation: index % 2 === 0 ? -3 : 3,
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 70%",
+                            end: "bottom 30%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Enhanced features animations
+            gsap.fromTo('.features-title', 
+                { opacity: 0, y: 80, scale: 0.9 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: '.features-section',
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+
+            gsap.utils.toArray('.feature-card').forEach((card, index) => {
+                gsap.fromTo(card, 
+                    { 
+                        opacity: 0, 
+                        y: 80, 
+                        scale: 0.8,
+                        rotationY: -45
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        rotationY: 0,
+                        duration: 1,
+                        delay: index * 0.2,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Enhanced contact animations
+            gsap.fromTo('.contact-title', 
+                { opacity: 0, y: 80, scale: 0.9 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: '.contact-section',
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+
+            gsap.utils.toArray('.contact-card').forEach((card, index) => {
+                gsap.fromTo(card, 
+                    { opacity: 0, y: 80 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        delay: index * 0.3,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Enhanced background parallax
+            gsap.to('.hero-bg', {
+                scale: 1,
+                duration: 2,
+                ease: "power2.out"
+            });
+
+            // Enhanced hover effects
+            gsap.utils.toArray('.feature-card, .contact-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, {
+                        y: -15,
+                        rotationY: 8,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        y: 0,
+                        rotationY: 0,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Enhanced image hover effects
+            gsap.utils.toArray('.story-image').forEach(image => {
+                image.addEventListener('mouseenter', () => {
+                    gsap.to(image, {
+                        scale: 1.05,
+                        rotation: 0,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                });
+                
+                image.addEventListener('mouseleave', () => {
+                    const isEven = image.closest('.story-section').classList.contains('story-section') && 
+                                  Array.from(document.querySelectorAll('.story-section')).indexOf(image.closest('.story-section')) % 2 === 0;
+                    
+                    gsap.to(image, {
+                        scale: 1,
+                        rotation: isEven ? -3 : 3,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Enhanced button interactions
+            const buttons = document.querySelectorAll('.action-button, .submit-btn, .cancel-btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        y: -2,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    gsap.to(button, {
+                        scale: 1,
+                        y: 0,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+                
+                button.addEventListener('mousedown', () => {
+                    gsap.to(button, {
+                        scale: 0.95,
+                        duration: 0.1,
+                        ease: "power2.in"
+                    });
+                });
+                
+                button.addEventListener('mouseup', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        duration: 0.1,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Set active navigation link
+            setActiveNavLink();
+        });
+
+        // Set active navigation link
+        function setActiveNavLink() {
+            const currentPage = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === '/about' && link.getAttribute('href') === '/about')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Enhanced cursor effects
+        document.addEventListener('mousemove', (e) => {
+            const spices = document.querySelectorAll('.floating-spice');
+            spices.forEach((spice, index) => {
+                const speed = (index + 1) * 0.0003;
+                const x = (e.clientX * speed);
+                const y = (e.clientY * speed);
+                gsap.to(spice, {
+                    x: x,
+                    y: y,
+                    duration: 2,
+                    ease: "power2.out"
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            backdrop-filter: blur(15px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--maroon), var(--deep-maroon));
+            padding: 3rem;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 3px solid var(--gold);
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.1);
+            color: var(--gold);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            transform: scale(1.02);
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: var(--light-gold);
+            opacity: 0.7;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--maroon);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .cancel-btn {
+            background: transparent;
+            color: var(--gold);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--gold);
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn:hover {
+            background: var(--gold);
+            color: var(--maroon);
+            transform: translateY(-3px);
+        }
+
+        .cancel-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 2px solid rgba(255,215,0,0.3);
+            margin-bottom: 1rem;
+            background: rgba(255,215,0,0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background: rgba(255,215,0,0.2);
+            transform: translateX(10px);
+        }
+
+        .cart-item-details h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .cart-item-details p {
+            color: var(--light-gold);
+            margin: 0.3rem 0;
+            font-size: 1.1rem;
+        }
+
+        .cart-total {
+            text-align: center;
+            margin: 2.5rem 0;
+            padding-top: 1.5rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .cart-total h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</body>
+</html>

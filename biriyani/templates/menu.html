@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Biriyani Bouquet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --maroon: #8B0000;
+            --deep-maroon: #600000;
+            --gold: #FFD700;
+            --light-gold: #F4D03F;
+            --dark-bg: #1A0F0F;
+            --text-light: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg), var(--deep-maroon));
+            color: var(--gold);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Navigation */
+        nav {
+            background: rgba(139, 0, 0, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-frame {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo-frame:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .logo-frame img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--gold);
+            color: var(--maroon);
+            border-color: var(--gold);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.8rem;
+            padding: 0.8rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cart-icon:hover {
+            background: var(--gold);
+            color: var(--maroon);
+            transform: scale(1.1) rotate(10deg);
+            border-color: var(--gold);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--gold);
+            color: var(--maroon);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Menu Container */
+        .menu-container {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pack-section {
+            margin-bottom: 8rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .pack-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pack-description {
+            text-align: center;
+            color: var(--light-gold);
+            font-size: 1.4rem;
+            margin-bottom: 4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Combo Grid - Centered Layout */
+        .combos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 5rem;
+            justify-items: center;
+            align-items: start;
+        }
+
+        .combo-card {
+            background: linear-gradient(135deg, rgba(139,0,0,0.9), rgba(96,0,0,0.8));
+            border: 3px solid var(--gold);
+            border-radius: 25px;
+            padding: 8rem 2rem 2rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: visible;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .combo-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(255, 215, 0, 0.3);
+            border-color: var(--light-gold);
+        }
+
+        /* Enhanced Circle Image Frame - 70% inside, 30% outside */
+        .combo-image-frame {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 6px solid var(--gold);
+            margin: -240px 0 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            background: var(--gold);
+            padding: 6px;
+            transition: all 0.4s ease;
+            z-index: 10;
+        }
+
+        .combo-image-frame:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(255,215,0,0.5);
+        }
+
+        .combo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Improved Text Visibility */
+        .combo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255,215,0,0.3);
+            width: 100%;
+        }
+
+        .combo-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .combo-price {
+            font-size: 2rem;
+            color: var(--light-gold);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .combo-serves {
+            color: var(--light-gold);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .combo-items {
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .combo-item {
+            color: var(--light-gold);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .combo-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+
+        /* Party Pack Specific Styles */
+        .combo-details {
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .detail-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-label {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .dropdown {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            color: var(--gold);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .dropdown option {
+            background: var(--maroon);
+            color: var(--gold);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .quantity-btn {
+            background: var(--gold);
+            color: var(--maroon);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+        }
+
+        .quantity-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255,215,0,0.5);
+        }
+
+        .quantity-btn:active {
+            transform: scale(0.95);
+        }
+
+        .quantity-display {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .weight-info {
+            color: var(--light-gold);
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        /* Improved Add to Cart Button */
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--maroon);
+            border: none;
+            padding: 1.2rem 2rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255,215,0,0.5);
+        }
+
+        .add-to-cart-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Single Serve Pack Specific */
+        .single-combo-items {
+            background: rgba(255,215,0,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255,215,0,0.3);
+            width: 100%;
+        }
+
+        /* Main Course Section */
+        .main-course-section {
+            background: rgba(255,215,0,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255,215,0,0.3);
+            width: 100%;
+        }
+
+        .main-course-item {
+            color: var(--light-gold);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .main-course-item::before {
+            content: '🍛';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* Raita Section */
+        .raita-section {
+            background: rgba(255,215,0,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(255,215,0,0.3);
+            width: 100%;
+        }
+
+        .raita-item {
+            color: var(--light-gold);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .raita-item::before {
+            content: '🥗';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* Modal Styles */
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            backdrop-filter: blur(15px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--maroon), var(--deep-maroon));
+            padding: 3rem;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 3px solid var(--gold);
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.1);
+            color: var(--gold);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            transform: scale(1.02);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--maroon);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .cancel-btn {
+            background: transparent;
+            color: var(--gold);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--gold);
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn:hover {
+            background: var(--gold);
+            color: var(--maroon);
+            transform: translateY(-3px);
+        }
+
+        .cancel-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 2px solid rgba(255,215,0,0.3);
+            margin-bottom: 1rem;
+            background: rgba(255,215,0,0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background: rgba(255,215,0,0.2);
+            transform: translateX(10px);
+        }
+
+        .cart-item-details h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .cart-item-details p {
+            color: var(--light-gold);
+            margin: 0.3rem 0;
+            font-size: 1.1rem;
+        }
+
+        .cart-total {
+            text-align: center;
+            margin: 2.5rem 0;
+            padding-top: 1.5rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .cart-total h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .menu-container {
+                padding: 1rem;
+            }
+
+            .pack-title {
+                font-size: 2.5rem;
+            }
+
+            .combos-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                width: 95%;
+            }
+
+            .combo-card {
+                padding: 7rem 1.5rem 1.5rem;
+                max-width: 100%;
+            }
+
+            .combo-image-frame {
+                width: 280px;
+                height: 280px;
+                margin: -196px 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .combo-image-frame {
+                width: 240px;
+                height: 240px;
+                margin: -168px 0 1.5rem;
+            }
+            
+            .combo-card {
+                padding: 6rem 1rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <div class="logo-frame">
+                <!-- Add your logo image here -->
+                <div style="width: 100%; height: 100%; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--maroon); font-weight: bold; font-size: 0.8rem; text-align: center; padding: 5px;">BB Logo</div>
+            </div>
+            <div class="logo">Biriyani Bouquet</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#partyPack" class="active">Party Pack</a></li>
+            <li><a href="#singlePack">Single Serve</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <div class="cart-icon" onclick="openCart()">
+            🛒
+            <div class="cart-count" id="cartCount">0</div>
+        </div>
+    </nav>
+
+    <!-- Menu Container -->
+    <div class="menu-container">
+        <!-- Party Pack Section -->
+        <section class="pack-section" id="partyPack">
+            <h2 class="pack-title">Party Pack</h2>
+            <p class="pack-description">Perfect for gatherings of 5-6 people - Complete meals with authentic flavors</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="combos-grid">
+                <!-- Chicken Combo -->
+                <div class="combo-card">
+                    <div class="combo-image-frame">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03246963d96f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Chicken Biriyani Bouquet" class="combo-image">
+                    </div>
+                    
+                    <div class="combo-header">
+                        <h3 class="combo-name">Chicken Biriyani Bouquet</h3>
+                        <div class="combo-price">₹1555</div>
+                        <div class="combo-serves">Serves 5-6 people</div>
+                    </div>
+                    
+                    <div class="main-course-section">
+                        <h4 class="detail-label">Main Course</h4>
+                        <div class="main-course-item">Chicken Biryani (2.5 kg)</div>
+                    </div>
+                    
+                    <div class="raita-section">
+                        <h4 class="detail-label">Raita</h4>
+                        <div class="raita-item">Raita (250 g)</div>
+                    </div>
+                    
+                    <div class="combo-details">
+                        <div class="detail-item">
+                            <label class="detail-label">Soup Selection:</label>
+                            <select class="dropdown" id="chickenSoup">
+                                <option value="Mutton Soup">Mutton Soup</option>
+                                <option value="Chicken Soup">Chicken Soup</option>
+                                <option value="Mushroom Soup">Mushroom Soup</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Starter:</label>
+                            <select class="dropdown" id="chickenStarter">
+                                <option value="Chicken Popcorn">Chicken Popcorn</option>
+                                <option value="Nethli Fish 65">Nethli Fish 65</option>
+                                <option value="Prawn 65">Prawn 65</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Dessert:</label>
+                            <select class="dropdown" id="chickenDessert">
+                                <option value="Jamun">Jamun</option>
+                                <option value="Bread Halwa">Bread Halwa</option>
+                                <option value="Milk Kova">Milk Kova</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Eggs:</label>
+                            <select class="dropdown" id="chickenEggs">
+                                <option value="Egg Balls">Egg Balls</option>
+                                <option value="Boiled Egg">Boiled Egg</option>
+                                <option value="Omelet">Omelet</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Complimentary Items:</label>
+                            <select class="dropdown" id="chickenComplimentary">
+                                <option value="350g Cake + Party Poppers">350g Cake + Party Poppers</option>
+                                <option value="Balloon Packet + Banana">Balloon Packet + Banana</option>
+                                <option value="Toothpick Set">Toothpick Set</option>
+                                <option value="All Items">All Items</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Mouth Freshener:</label>
+                            <select class="dropdown" id="chickenFreshener">
+                                <option value="Chocolate Beeda">Chocolate Beeda</option>
+                                <option value="Mint Beeda">Mint Beeda</option>
+                                <option value="Gova Beeda">Gova Beeda</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" onclick="updateQuantity('chicken', -1)">-</button>
+                        <div class="quantity-display" id="chickenQuantity">1</div>
+                        <button class="quantity-btn" onclick="updateQuantity('chicken', 1)">+</button>
+                    </div>
+                    <div class="weight-info">Each biryani is 2.5 kg - serves 5-6 people</div>
+                    
+                    <button class="add-to-cart-btn" onclick="addToCart('chicken')">
+                        Add to Cart - ₹<span id="chickenTotal">1555</span>
+                    </button>
+                </div>
+
+                <!-- Mutton Combo -->
+                <div class="combo-card">
+                    <div class="combo-image-frame">
+                        <img src="https://images.unsplash.com/photo-1630919550274-8ad697c4e92c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Mutton Biriyani Bouquet" class="combo-image">
+                    </div>
+                    
+                    <div class="combo-header">
+                        <h3 class="combo-name">Mutton Biriyani Bouquet</h3>
+                        <div class="combo-price">₹2055</div>
+                        <div class="combo-serves">Serves 5-6 people</div>
+                    </div>
+                    
+                    <div class="main-course-section">
+                        <h4 class="detail-label">Main Course</h4>
+                        <div class="main-course-item">Mutton Biryani (2.5 kg)</div>
+                    </div>
+                    
+                    <div class="raita-section">
+                        <h4 class="detail-label">Raita</h4>
+                        <div class="raita-item">Raita (250 g)</div>
+                    </div>
+                    
+                    <div class="combo-details">
+                        <div class="detail-item">
+                            <label class="detail-label">Soup Selection:</label>
+                            <select class="dropdown" id="muttonSoup">
+                                <option value="Mutton Soup">Mutton Soup</option>
+                                <option value="Chicken Soup">Chicken Soup</option>
+                                <option value="Mushroom Soup">Mushroom Soup</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Starter:</label>
+                            <select class="dropdown" id="muttonStarter">
+                                <option value="Chicken Popcorn">Chicken Popcorn</option>
+                                <option value="Nethli Fish 65">Nethli Fish 65</option>
+                                <option value="Prawn 65">Prawn 65</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Dessert:</label>
+                            <select class="dropdown" id="muttonDessert">
+                                <option value="Jamun">Jamun</option>
+                                <option value="Bread Halwa">Bread Halwa</option>
+                                <option value="Milk Kova">Milk Kova</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Eggs:</label>
+                            <select class="dropdown" id="muttonEggs">
+                                <option value="Egg Balls">Egg Balls</option>
+                                <option value="Boiled Egg">Boiled Egg</option>
+                                <option value="Omelet">Omelet</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Complimentary Items:</label>
+                            <select class="dropdown" id="muttonComplimentary">
+                                <option value="350g Cake + Party Poppers">350g Cake + Party Poppers</option>
+                                <option value="Balloon Packet + Banana">Balloon Packet + Banana</option>
+                                <option value="Toothpick Set">Toothpick Set</option>
+                                <option value="All Items">All Items</option>
+                            </select>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label class="detail-label">Mouth Freshener:</label>
+                            <select class="dropdown" id="muttonFreshener">
+                                <option value="Chocolate Beeda">Chocolate Beeda</option>
+                                <option value="Mint Beeda">Mint Beeda</option>
+                                <option value="Gova Beeda">Gova Beeda</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" onclick="updateQuantity('mutton', -1)">-</button>
+                        <div class="quantity-display" id="muttonQuantity">1</div>
+                        <button class="quantity-btn" onclick="updateQuantity('mutton', 1)">+</button>
+                    </div>
+                    <div class="weight-info">Each biryani is 2.5 kg - serves 5-6 people</div>
+                    
+                    <button class="add-to-cart-btn" onclick="addToCart('mutton')">
+                        Add to Cart - ₹<span id="muttonTotal">2055</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Serve Pack Section -->
+        <section class="pack-section" id="singlePack">
+            <h2 class="pack-title">Single Serve Pack</h2>
+            <p class="pack-description">Perfect for individual meals - quick and delicious</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="combos-grid">
+                <!-- Combo 1 -->
+                <div class="combo-card">
+                    <div class="combo-image-frame">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Chicken Delight" class="combo-image">
+                    </div>
+                    <div class="combo-header">
+                        <h3 class="combo-name">Combo 1 - Chicken Delight</h3>
+                        <div class="combo-price">₹320</div>
+                    </div>
+                    <div class="single-combo-items">
+                        <div class="combo-item">Chicken Biryani</div>
+                        <div class="combo-item">Rasan Rice</div>
+                        <div class="combo-item">Omlet</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addSingleCombo('Combo 1 - Chicken Delight', 320)">
+                        Add to Cart - ₹320
+                    </button>
+                </div>
+
+                <!-- Combo 2 -->
+                <div class="combo-card">
+                    <div class="combo-image-frame">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Mutton Special" class="combo-image">
+                    </div>
+                    <div class="combo-header">
+                        <h3 class="combo-name">Combo 2 - Mutton Special</h3>
+                        <div class="combo-price">₹380</div>
+                    </div>
+                    <div class="single-combo-items">
+                        <div class="combo-item">Mutton Biryani</div>
+                        <div class="combo-item">Rasan Rice</div>
+                        <div class="combo-item">Omlet</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addSingleCombo('Combo 2 - Mutton Special', 380)">
+                        Add to Cart - ₹380
+                    </button>
+                </div>
+                    
+                <!-- Combo 3 -->
+                <div class="combo-card">
+                    <div class="combo-image-frame">
+                        <img src="https://images.unsplash.com/photo-1709313416395-00ec7e0e2c2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Prawn Fantasy" class="combo-image">
+                    </div>
+                    <div class="combo-header">
+                        <h3 class="combo-name">Combo 3 - Prawn Fantasy</h3>
+                        <div class="combo-price">₹350</div>
+                    </div>
+                    <div class="single-combo-items">
+                        <div class="combo-item">Prawn Biryani</div>
+                        <div class="combo-item">Rasan Rice</div>
+                        <div class="combo-item">Omlet</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addSingleCombo('Combo 3 - Prawn Fantasy', 350)">
+                        Add to Cart - ₹350
+                    </button>
+                </div>
+
+                <!-- Combo 4 -->
+                <div class="combo-card">
+                    <div class="combo-image-frame">
+                        <img src="https://images.unsplash.com/photo-1709313416327-56dc1d2f550e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Veg Treat" class="combo-image">
+                    </div>
+                    <div class="combo-header">
+                        <h3 class="combo-name">Combo 4 - Veg Treat</h3>
+                        <div class="combo-price">₹280</div>
+                    </div>
+                    <div class="single-combo-items">
+                        <div class="combo-item">Vegetable Biryani</div>
+                        <div class="combo-item">Rasan Rice</div>
+                        <div class="combo-item">Omlet</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addSingleCombo('Combo 4 - Veg Treat', 280)">
+                        Add to Cart - ₹280
+                    </button>
+                </div>
+
+                <!-- Combo 5 -->
+                <div class="combo-card">
+                    <div class="combo-image-frame">
+                        <img src="https://images.unsplash.com/photo-1709313416327-56dc1d2f550e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Egg Special" class="combo-image">
+                    </div>
+                    <div class="combo-header">
+                        <h3 class="combo-name">Combo 5 - Egg Special</h3>
+                        <div class="combo-price">₹240</div>
+                    </div>
+                    <div class="single-combo-items">
+                        <div class="combo-item">Egg Biryani</div>
+                        <div class="combo-item">Rasan Rice</div>
+                        <div class="combo-item">Omlet</div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addSingleCombo('Combo 5 - Egg Special', 240)">
+                        Add to Cart - ₹240
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="order-modal" id="cartModal">
+        <div class="modal-content">
+            <h2 class="modal-title">Your Cart</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <h3>Total: ₹<span id="cartTotal">0</span></h3>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="submit-btn" onclick="openOrderModal()">Place Order</button>
+                <button type="button" class="cancel-btn" onclick="closeCart()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="order-modal" id="orderModal">
+        <div class="modal-content">
+            <h2 class="modal-title">Complete Your Order</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="customerName">Full Name *</label>
+                    <input type="text" id="customerName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address *</label>
+                    <textarea id="address" rows="3" required placeholder="Enter your complete delivery address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="altNumber">Contact Number *</label>
+                    <input type="tel" id="altNumber" required placeholder="Enter your WhatsApp number">
+                </div>
+                <div class="form-group">
+                    <label for="message">Special Instructions (Optional)</label>
+                    <textarea id="message" rows="3" placeholder="Any special instructions for your order..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="submit-btn" onclick="submitOrder()">Submit & Share to WhatsApp</button>
+                    <button type="button" class="cancel-btn" onclick="closeOrderModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let totalAmount = 0;
+        let quantities = {
+            chicken: 1,
+            mutton: 1
+        };
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate sections on scroll
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Enhanced card animations
+            gsap.utils.toArray('.combo-card').forEach((card, index) => {
+                gsap.fromTo(card, 
+                    {
+                        opacity: 0,
+                        y: 80,
+                        scale: 0.8,
+                        rotationY: -30
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        rotationY: 0,
+                        duration: 1,
+                        delay: index * 0.2,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Enhanced section animations
+            gsap.utils.toArray('.pack-section').forEach((section, index) => {
+                gsap.fromTo(section, 
+                    {
+                        opacity: 0,
+                        y: 100,
+                        scale: 0.95
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Enhanced button interactions
+            const buttons = document.querySelectorAll('.add-to-cart-btn, .quantity-btn, .submit-btn, .cancel-btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        y: -2,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    gsap.to(button, {
+                        scale: 1,
+                        y: 0,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+                
+                button.addEventListener('mousedown', () => {
+                    gsap.to(button, {
+                        scale: 0.95,
+                        duration: 0.1,
+                        ease: "power2.in"
+                    });
+                });
+                
+                button.addEventListener('mouseup', () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        duration: 0.1,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Set active navigation link
+            setActiveNavLink();
+        });
+
+        function setActiveNavLink() {
+            const currentPage = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === '/menu' && link.getAttribute('href').includes('/menu')) ||
+                    (link.getAttribute('href') === '#partyPack' && window.location.hash === '#partyPack') ||
+                    (link.getAttribute('href') === '#singlePack' && window.location.hash === '#singlePack')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function updateQuantity(type, change) {
+            quantities[type] = Math.max(1, quantities[type] + change);
+            document.getElementById(`${type}Quantity`).textContent = quantities[type];
+            
+            const basePrice = type === 'chicken' ? 1555 : 2055;
+            const total = basePrice * quantities[type];
+            document.getElementById(`${type}Total`).textContent = total;
+        }
+
+        function addToCart(type) {
+            const basePrice = type === 'chicken' ? 1555 : 2055;
+            const quantity = quantities[type];
+            const totalPrice = basePrice * quantity;
+            
+            // Get selected items
+            const soup = document.getElementById(`${type}Soup`).value;
+            const starter = document.getElementById(`${type}Starter`).value;
+            const raita = "Raita (250 g)";
+            const dessert = document.getElementById(`${type}Dessert`).value;
+            const eggs = document.getElementById(`${type}Eggs`).value;
+            const complimentary = document.getElementById(`${type}Complimentary`).value;
+            const freshener = document.getElementById(`${type}Freshener`).value;
+            
+            const item = {
+                name: `${type.charAt(0).toUpperCase() + type.slice(1)} Biriyani Bouquet`,
+                price: basePrice,
+                quantity: quantity,
+                details: {
+                    mainCourse: type === 'chicken' ? 'Chicken Biryani (2.5 kg)' : 'Mutton Biryani (2.5 kg)',
+                    raita,
+                    soup,
+                    starter,
+                    dessert,
+                    eggs,
+                    complimentary,
+                    freshener
+                }
+            };
+            
+            cart.push(item);
+            updateCartDisplay();
+            showAddedToCartMessage();
+        }
+
+        function addSingleCombo(name, price) {
+            const item = {
+                name: name,
+                price: price,
+                quantity: 1,
+                type: 'single'
+            };
+            
+            cart.push(item);
+            updateCartDisplay();
+            showAddedToCartMessage();
+        }
+
+        function showAddedToCartMessage() {
+            // Create enhanced floating notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: var(--gold);
+                color: var(--maroon);
+                padding: 1.2rem 2.5rem;
+                border-radius: 30px;
+                font-weight: bold;
+                z-index: 10000;
+                box-shadow: 0 15px 35px rgba(255,215,0,0.6);
+                transform: translateX(150px) rotate(10deg);
+                opacity: 0;
+                font-size: 1.1rem;
+            `;
+            notification.textContent = 'Item added to cart! 🎉';
+            document.body.appendChild(notification);
+            
+            // Enhanced animate notification
+            gsap.to(notification, {
+                x: 0,
+                rotation: 0,
+                opacity: 1,
+                duration: 0.6,
+                ease: "back.out(1.7)",
+                onComplete: () => {
+                    setTimeout(() => {
+                        gsap.to(notification, {
+                            x: 150,
+                            rotation: -10,
+                            opacity: 0,
+                            duration: 0.5,
+                            onComplete: () => {
+                                document.body.removeChild(notification);
+                            }
+                        });
+                    }, 2000);
+                }
+            });
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.getElementById('cartCount');
+            
+            cartItems.innerHTML = '';
+            totalAmount = 0;
+            
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                
+                let detailsHtml = '';
+                if (item.details) {
+                    detailsHtml = `
+                        <p>Main Course: ${item.details.mainCourse}</p>
+                        <p>Raita: ${item.details.raita}</p>
+                        <p>Soup: ${item.details.soup}</p>
+                        <p>Starter: ${item.details.starter}</p>
+                        <p>Dessert: ${item.details.dessert}</p>
+                        <p>Eggs: ${item.details.eggs}</p>
+                        <p>Complimentary: ${item.details.complimentary}</p>
+                        <p>Freshener: ${item.details.freshener}</p>
+                    `;
+                }
+                
+                itemElement.innerHTML = `
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity}</p>
+                        ${detailsHtml}
+                        <p>Price: ₹${item.price * item.quantity}</p>
+                    </div>
+                    <button class="cancel-btn" onclick="removeFromCart(${index})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Remove</button>
+                `;
+                cartItems.appendChild(itemElement);
+                totalAmount += item.price * item.quantity;
+            });
+            
+            cartTotal.textContent = totalAmount;
+            cartCount.textContent = cart.length;
+            
+            // Enhanced cart count animation
+            gsap.to('.cart-count', {
+                scale: 1.5,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 2,
+                ease: "elastic.out(1, 0.5)"
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function openCart() {
+            updateCartDisplay();
+            document.getElementById('cartModal').style.display = 'block';
+            gsap.fromTo('#cartModal .modal-content', 
+                { scale: 0.8, opacity: 0, rotationY: -30 },
+                { scale: 1, opacity: 1, rotationY: 0, duration: 0.6, ease: "back.out(1.7)" }
+            );
+        }
+
+        function closeCart() {
+            gsap.to('#cartModal .modal-content', {
+                scale: 0.8,
+                opacity: 0,
+                rotationY: 30,
+                duration: 0.4,
+                ease: "back.in(1.7)",
+                onComplete: () => {
+                    document.getElementById('cartModal').style.display = 'none';
+                }
+            });
+        }
+
+        function openOrderModal() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            closeCart();
+            document.getElementById('orderModal').style.display = 'block';
+            gsap.fromTo('#orderModal .modal-content', 
+                { scale: 0.8, opacity: 0, y: 50 },
+                { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }
+            );
+        }
+
+        function closeOrderModal() {
+            gsap.to('#orderModal .modal-content', {
+                scale: 0.8,
+                opacity: 0,
+                y: -50,
+                duration: 0.4,
+                ease: "back.in(1.7)",
+                onComplete: () => {
+                    document.getElementById('orderModal').style.display = 'none';
+                }
+            });
+        }
+
+        function submitOrder() {
+            const name = document.getElementById('customerName').value;
+            const address = document.getElementById('address').value;
+            const altNumber = document.getElementById('altNumber').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !address || !altNumber) {
+                alert('Please fill all required fields to place your order.');
+                return;
+            }
+
+            // Generate order summary
+            let orderSummary = "🍛 BIRIYANI BOUQUET ORDER 🍛\n\n";
+            orderSummary += "ORDER DETAILS:\n\n";
+            
+            cart.forEach(item => {
+                orderSummary += `📋 ${item.name}\n`;
+                orderSummary += `   Quantity: ${item.quantity}\n`;
+                if (item.details) {
+                    orderSummary += `   Main Course: ${item.details.mainCourse}\n`;
+                    orderSummary += `   Raita: ${item.details.raita}\n`;
+                    orderSummary += `   Soup: ${item.details.soup}\n`;
+                    orderSummary += `   Starter: ${item.details.starter}\n`;
+                    orderSummary += `   Dessert: ${item.details.dessert}\n`;
+                    orderSummary += `   Eggs: ${item.details.eggs}\n`;
+                    orderSummary += `   Complimentary: ${item.details.complimentary}\n`;
+                    orderSummary += `   Freshener: ${item.details.freshener}\n`;
+                }
+                orderSummary += `   Price: ₹${item.price * item.quantity}\n\n`;
+            });
+            
+            orderSummary += `💰 TOTAL AMOUNT: ₹${totalAmount}\n\n`;
+            orderSummary += "CUSTOMER DETAILS:\n";
+            orderSummary += `👤 Name: ${name}\n`;
+            orderSummary += `📍 Address: ${address}\n`;
+            orderSummary += `📞 Contact: ${altNumber}\n`;
+            if (message) {
+                orderSummary += `💬 Special Instructions: ${message}\n`;
+            }
+            orderSummary += `\n🕒 Order Time: ${new Date().toLocaleString()}\n\n`;
+            orderSummary += "Thank you for choosing Biriyani Bouquet! 🍛\n";
+            orderSummary += "We'll contact you shortly to confirm your order.";
+
+            // Open WhatsApp
+            const whatsappMessage = encodeURIComponent(orderSummary);
+            const whatsappUrl = `https://wa.me/919585502005?text=${whatsappMessage}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Clear cart
+            cart = [];
+            quantities = { chicken: 1, mutton: 1 };
+            updateCartDisplay();
+            closeOrderModal();
+            
+            // Reset quantities display
+            document.getElementById('chickenQuantity').textContent = '1';
+            document.getElementById('muttonQuantity').textContent = '1';
+            document.getElementById('chickenTotal').textContent = '1555';
+            document.getElementById('muttonTotal').textContent = '2055';
+        }
+    </script>
+</body> 
+</html>
