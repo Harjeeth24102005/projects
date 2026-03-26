@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Customer Dashboard - Button Counts</title>
+
+<style>
+:root{
+    --bg: linear-gradient(135deg, #f6f7fb 0%, #edf2f7 100%);
+    --card:#ffffff;
+    --shadow:0 25px 60px rgba(0,0,0,.08);
+    --radius:20px;
+    --accent:#2563eb;
+    --accent-glow:rgba(37, 99, 235, 0.2);
+}
+
+/* ---------- GLOBAL ---------- */
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"Segoe UI", system-ui, sans-serif;
+    background:var(--bg);
+    color:#1f2937;
+    overflow:hidden;
+}
+.dashboard{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* ---------- CENTER CIRCLE ---------- */
+.center-circle{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:var(--card);
+    box-shadow:var(--shadow), 
+                inset 0 0 0 1px rgba(255,255,255,0.8),
+                0 0 100px var(--accent-glow);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+    animation:float 8s ease-in-out infinite,
+               glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0px) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) translateY(-20px) rotate(0.5deg); }
+}
+
+@keyframes glow {
+    0% { box-shadow: var(--shadow), 
+                    inset 0 0 0 1px rgba(255,255,255,0.8),
+                    0 0 80px rgba(37, 99, 235, 0.1); }
+    100% { box-shadow: var(--shadow), 
+                     inset 0 0 0 1px rgba(255,255,255,0.8),
+                     0 0 120px rgba(37, 99, 235, 0.3); }
+}
+
+.center-circle input,
+.center-circle select{
+    width:80%;
+    padding:14px 18px;
+    margin:8px 0;
+    border-radius:16px;
+    border:2px solid #e2e8f0;
+    outline:none;
+    font-size:15px;
+    transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background:rgba(255,255,255,0.95);
+}
+
+.center-circle input:focus,
+.center-circle select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-glow),
+               0 10px 30px rgba(37,99,235,0.15);
+    transform:scale(1.02);
+}
+
+/* ---------- KPI BOXES ---------- */
+.box{
+    position:absolute;
+    width:280px;
+    height:170px;
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:24px;
+    animation:slideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity:0;
+    transform-origin:center;
+    transition:all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow:hidden;
+}
+
+.box::before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg, var(--accent), #60a5fa);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.box:hover {
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 40px 100px rgba(0,0,0,0.15);
+}
+
+.box:hover::before {
+    transform:scaleX(1);
+}
+
+@keyframes slideIn {
+    0% {
+        opacity:0;
+        transform:translateY(60px) rotateX(-15deg) scale(0.9);
+        filter:blur(4px);
+    }
+    100% {
+        opacity:1;
+        transform:translateY(0) rotateX(0) scale(1);
+        filter:blur(0);
+    }
+}
+
+/* Staggered animation delays */
+.top-left { animation-delay: 0.2s; }
+.top-right { animation-delay: 0.4s; }
+.bottom-left { animation-delay: 0.6s; }
+.bottom-right { animation-delay: 0.8s; }
+
+.box h3{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:20px;
+    letter-spacing:0.5px;
+    text-align:center;
+    background:linear-gradient(135deg, #1e40af, #3b82f6);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+/* ---------- BUTTONS ---------- */
+.buttons{
+    margin-top:10px;
+    display:flex;
+    gap:12px;
+    height:70px;
+}
+.buttons button{
+    flex:1;
+    padding:12px 0;
+    border:none;
+    border-radius:14px;
+    font-size:15px;
+    cursor:pointer;
+    color:white;
+    font-weight:600;
+    transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.buttons button::after {
+    content:'';
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:0;
+    height:0;
+    border-radius:50%;
+    background:rgba(255,255,255,0.3);
+    transform:translate(-50%, -50%);
+    transition:width 0.6s, height 0.6s;
+}
+
+.buttons button:active::after {
+    width:200px;
+    height:200px;
+}
+
+.buttons button:hover{
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    filter:brightness(1.1);
+}
+
+/* Button count styling */
+.count-badge {
+    font-size:28px;
+    font-weight:800;
+    margin-bottom:4px;
+    text-shadow:0 2px 4px rgba(0,0,0,0.2);
+    transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.button-label {
+    font-size:12px;
+    opacity:0.9;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+}
+
+.pending{
+    background:linear-gradient(135deg, #f59e0b, #fbbf24);
+    box-shadow:0 4px 15px rgba(245, 158, 11, 0.3);
+}
+.completed{
+    background:linear-gradient(135deg, #22c55e, #4ade80);
+    box-shadow:0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+/* ---------- POSITIONS ---------- */
+.top-left{top:12%; left:12%}
+.top-right{top:12%; right:12%}
+.bottom-left{bottom:12%; left:12%}
+.bottom-right{bottom:12%; right:12%}
+
+/* ---------- POPUP ---------- */
+.popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    backdrop-filter:blur(8px);
+    animation:fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; backdrop-filter:blur(0); }
+    to { opacity:1; backdrop-filter:blur(8px); }
+}
+
+.popup-content{
+    background:linear-gradient(135deg, #ffffff, #f8fafc);
+    width:70%;
+    max-height:70%;
+    border-radius:24px;
+    padding:32px;
+    overflow:auto;
+    animation:modalIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:0 50px 150px rgba(0,0,0,0.3);
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+@keyframes modalIn {
+    0% {
+        opacity:0;
+        transform:scale(0.8) translateY(60px) rotateX(-10deg);
+        filter:blur(10px);
+    }
+    100% {
+        opacity:1;
+        transform:scale(1) translateY(0) rotateX(0);
+        filter:blur(0);
+    }
+}
+
+table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+}
+th,td{
+    padding:16px;
+    border-bottom:1px solid #e5e7eb;
+    transition:background-color 0.2s;
+}
+
+th {
+    background:linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    font-weight:600;
+    position:sticky;
+    top:0;
+}
+
+tr:hover td {
+    background:rgba(37, 99, 235, 0.05);
+}
+
+/* ---------- COUNT ANIMATION ---------- */
+.animate-count{
+    animation:countBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes countBounce {
+    0% {
+        transform:scale(1);
+        opacity:0.5;
+    }
+    30% {
+        transform:scale(1.4);
+    }
+    50% {
+        transform:scale(0.95);
+    }
+    70% {
+        transform:scale(1.1);
+    }
+    100% {
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* ---------- FLOATING PARTICLES ---------- */
+.particle {
+    position:absolute;
+    border-radius:50%;
+    background:var(--accent);
+    pointer-events:none;
+    z-index:1;
+    animation:particleFloat 3s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    50% {
+        opacity:0.3;
+    }
+    75% {
+        transform:translateY(-100px) rotate(180deg);
+        opacity:0;
+    }
+}
+
+/* ---------- LOADING ANIMATION ---------- */
+.loading-dots {
+    display:inline-flex;
+    gap:4px;
+}
+
+.loading-dots span {
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    animation:pulse 1.4s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(2) { animation-delay:0.2s; }
+.loading-dots span:nth-child(3) { animation-delay:0.4s; }
+
+@keyframes pulse {
+    0%, 100% { transform:scale(1); opacity:0.5; }
+    50% { transform:scale(1.2); opacity:1; }
+}
+</style>
+</head>
+
+<body>
+<div class="dashboard">
+    <div class="center-circle">
+        <input id="search" placeholder="🔍 Search company..." />
+        <select id="companySelect"></select>
+        <div class="loading-dots" id="loading" style="margin-top:10px;display:none;">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="box top-left" data-type="pending_po">
+        <h3>Purchase Orders</h3>
+        <div class="buttons">
+            <button class="pending" data-status="Pending">
+                <span class="count-badge" id="pending_po_pending">0</span>
+                <span class="button-label">Pending</span>
+            </button>
+            <button class="completed" data-status="Completed">
+                <span class="count-badge" id="pending_po_completed">0</span>
+                <span class="button-label">Completed</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="box top-right" data-type="dispatch">
+        <h3>Dispatch Status</h3>
+        <div class="buttons">
+            <button class="pending" data-status="Pending">
+                <span class="count-badge" id="dispatch_pending">0</span>
+                <span class="button-label">Pending</span>
+            </button>
+            <button class="completed" data-status="Completed">
+                <span class="count-badge" id="dispatch_completed">0</span>
+                <span class="button-label">Completed</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="box bottom-left" data-type="purchase_pattern">
+        <h3>Purchase Pattern</h3>
+        <div class="buttons">
+            <button class="pending" data-status="Pending">
+                <span class="count-badge" id="purchase_pattern_pending">0</span>
+                <span class="button-label">Pending</span>
+            </button>
+            <button class="completed" data-status="Completed">
+                <span class="count-badge" id="purchase_pattern_completed">0</span>
+                <span class="button-label">Completed</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="box bottom-right" data-type="invoice">
+        <h3>Invoice Status</h3>
+        <div class="buttons">
+            <button class="pending" data-status="Pending">
+                <span class="count-badge" id="invoice_pending">0</span>
+                <span class="button-label">Pending</span>
+            </button>
+            <button class="completed" data-status="Completed">
+                <span class="count-badge" id="invoice_completed">0</span>
+                <span class="button-label">Completed</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <h3 id="popupTitle"></h3>
+        <table>
+            <thead>
+                <tr><th>ID</th><th>Status</th><th>Amount</th><th>Date</th></tr>
+            </thead>
+            <tbody id="popupTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+let db=[], currentCompany="", particles=[];
+
+/* LOAD DATA WITH LOADING ANIMATION */
+function loadData() {
+    const loading = document.getElementById('loading');
+    loading.style.display = 'flex';
+    
+    fetch("data.json")
+    .then(r=>r.json())
+    .then(d=>{
+        db=d; 
+        loading.style.display = 'none';
+        loadCompanies();
+        createParticles();
+    })
+    .catch(err => {
+        console.error('Error loading data:', err);
+        loading.style.display = 'none';
+        // Use sample data for demo if data.json doesn't exist
+        db = generateSampleData();
+        loadCompanies();
+        createParticles();
+    });
+}
+
+/* SAMPLE DATA FOR DEMO */
+function generateSampleData() {
+    const companies = ["TechCorp", "Global Solutions", "Innovate Inc", "Future Enterprises"];
+    const types = ["pending_po", "dispatch", "purchase_pattern", "invoice"];
+    const statuses = ["Pending", "Completed"];
+    
+    const data = [];
+    let id = 1;
+    
+    companies.forEach(company => {
+        types.forEach(type => {
+            statuses.forEach(status => {
+                const count = Math.floor(Math.random() * 20) + 1;
+                for(let i = 0; i < count; i++) {
+                    data.push({
+                        id: id++,
+                        company: company,
+                        type: type,
+                        status: status,
+                        amount: Math.floor(Math.random() * 10000) + 1000,
+                        date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString()
+                    });
+                }
+            });
+        });
+    });
+    
+    return data;
+}
+
+/* CREATE FLOATING PARTICLES */
+function createParticles() {
+    const colors = ['#2563eb', '#60a5fa', '#3b82f6', '#1d4ed8'];
+    
+    for(let i=0; i<15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 20 + 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.top = Math.random() * 100 + 'vh';
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.opacity = Math.random() * 0.3;
+        particle.style.animationDelay = Math.random() * 2 + 's';
+        particle.style.animationDuration = Math.random() * 3 + 2 + 's';
+        
+        document.body.appendChild(particle);
+        particles.push(particle);
+    }
+}
+
+/* COMPANY LOAD */
+function loadCompanies(){
+    companySelect.innerHTML="";
+    const companies = [...new Set(db.map(x=>x.company))];
+    companies.forEach(c=>{
+        companySelect.add(new Option(c,c));
+    });
+    currentCompany = companies[0] || "";
+    companySelect.value = currentCompany;
+    updateDashboard();
+}
+
+/* SEARCH WITH ANIMATION */
+search.oninput=function(e){
+    const v=e.target.value.toLowerCase();
+    let matchFound = false;
+    
+    [...companySelect.options].forEach(o=>{
+        const matches = o.value.toLowerCase().includes(v);
+        o.hidden=!matches;
+        if(matches) matchFound = true;
+    });
+    
+    // Animate search input
+    search.style.transform = matchFound ? 'scale(1.02)' : 'scale(1)';
+    search.style.borderColor = matchFound ? '#22c55e' : '#e2e8f0';
+};
+
+/* COMPANY CHANGE WITH TRANSITION */
+companySelect.onchange=function(e){
+    currentCompany=e.target.value;
+    
+    // Animate center circle on change
+    const circle = document.querySelector('.center-circle');
+    circle.style.animation = 'none';
+    setTimeout(() => {
+        circle.style.animation = 'float 8s ease-in-out infinite, glow 4s ease-in-out infinite alternate';
+    }, 10);
+    
+    updateDashboard();
+};
+
+/* KPI UPDATE WITH ENHANCED ANIMATION */
+function updateDashboard(){
+    const data=db.filter(d=>d.company===currentCompany);
+    const types = ["pending_po", "dispatch", "purchase_pattern", "invoice"];
+    const statuses = ["Pending", "Completed"];
+    
+    types.forEach((type, typeIndex) => {
+        statuses.forEach(status => {
+            const elementId = `${type}_${status.toLowerCase()}`;
+            const el = document.getElementById(elementId);
+            if (el) {
+                const target = data.filter(d => d.type === type && d.status === status).length;
+                const current = parseInt(el.textContent) || 0;
+                
+                // Animate number counting
+                animateNumber(el, current, target, 800);
+            }
+        });
+        
+        // Ripple effect on box
+        const box = document.querySelector(`[data-type="${type}"]`);
+        if (box) {
+            box.style.animation = 'none';
+            setTimeout(() => {
+                box.style.animation = `slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${typeIndex * 0.1}s forwards`;
+            }, 10);
+        }
+    });
+}
+
+/* SMOOTH NUMBER ANIMATION */
+function animateNumber(element, start, end, duration) {
+    const startTime = performance.now();
+    const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const current = Math.floor(start + (end - start) * easeOutQuart);
+        
+        element.textContent = current;
+        
+        // Add bounce animation
+        if(progress < 1) {
+            element.style.transform = `scale(${1 + easeOutQuart * 0.2})`;
+            requestAnimationFrame(step);
+        } else {
+            element.classList.remove("animate-count");
+            void element.offsetWidth;
+            element.classList.add("animate-count");
+            element.style.transform = 'scale(1)';
+        }
+    };
+    
+    requestAnimationFrame(step);
+}
+
+/* BUTTON EVENTS WITH RIPPLE EFFECT */
+document.querySelectorAll(".box").forEach(box=>{
+    box.querySelectorAll("button").forEach(btn=>{
+        btn.onclick=function(e){
+            // Ripple effect
+            const ripple = document.createElement('span');
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size/2;
+            const y = e.clientY - rect.top - size/2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.6);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                top: ${y}px;
+                left: ${x}px;
+                pointer-events: none;
+            `;
+            
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+            
+            // Open popup
+            setTimeout(() => openPopup(
+                box.dataset.type,
+                btn.dataset.status
+            ), 300);
+        };
+    });
+});
+
+/* RIPPLE ANIMATION */
+const style = document.createElement('style');
+style.textContent = `
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+`;
+document.head.appendChild(style);
+
+/* POPUP WITH ENHANCED ENTRANCE */
+function openPopup(type,status){
+    popup.style.display="flex";
+    popupTitle.textContent=`${type.replace("_"," ").toUpperCase()} – ${status}`;
+    
+    const data = db.filter(d=>
+        d.company===currentCompany &&
+        d.type===type &&
+        d.status===status
+    );
+    
+    // Animate table rows
+    popupTable.innerHTML = data.map((r,i)=>`
+        <tr style="animation: rowSlideIn 0.5s ease-out ${i * 0.05}s both">
+            <td>${r.id}</td>
+            <td>
+                <span class="status-badge ${r.status.toLowerCase()}">
+                    ${r.status}
+                </span>
+            </td>
+            <td>$${r.amount.toLocaleString()}</td>
+            <td>${new Date(r.date).toLocaleDateString()}</td>
+        </tr>
+    `).join("");
+    
+    // Add row animation
+    const rowStyle = document.createElement('style');
+    rowStyle.textContent = `
+    @keyframes rowSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .status-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .status-badge.pending {
+        background: rgba(245, 158, 11, 0.1);
+        color: #f59e0b;
+    }
+    .status-badge.completed {
+        background: rgba(34, 197, 94, 0.1);
+        color: #22c55e;
+    }
+    `;
+    document.head.appendChild(rowStyle);
+}
+
+/* CLOSE POPUP WITH ANIMATION */
+popup.onclick=function(e){
+    if(e.target.id==="popup") {
+        popup.style.animation = 'fadeOut 0.3s ease-out forwards';
+        setTimeout(() => {
+            popup.style.display = "none";
+            popup.style.animation = '';
+        }, 300);
+    }
+};
+
+document.onkeydown=function(e){
+    if(e.key==="Escape" && popup.style.display === "flex") {
+        popup.style.animation = 'fadeOut 0.3s ease-out forwards';
+        setTimeout(() => {
+            popup.style.display = "none";
+            popup.style.animation = '';
+        }, 300);
+    }
+};
+
+// Add fadeOut animation
+const fadeOutStyle = document.createElement('style');
+fadeOutStyle.textContent = `
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+}
+`;
+document.head.appendChild(fadeOutStyle);
+
+// Initialize
+loadData();
+</script>
+</body>
+</html>

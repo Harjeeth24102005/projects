@@ -1,0 +1,10 @@
+[
+  { "id": 1, "company": "Sarang Auto", "type": "pending_po", "status": "Pending", "amount": 120000 },
+  { "id": 2, "company": "Sarang Auto", "type": "pending_po", "status": "Completed", "amount": 98000 },
+  { "id": 3, "company": "Sarang Auto", "type": "dispatch", "status": "Pending", "amount": 45000 },
+  { "id": 4, "company": "Sarang Auto", "type": "invoice", "status": "Completed", "amount": 76000 },
+
+  { "id": 5, "company": "Titan Motors", "type": "pending_po", "status": "Pending", "amount": 89000 },
+  { "id": 6, "company": "Titan Motors", "type": "dispatch", "status": "Completed", "amount": 64000 },
+  { "id": 7, "company": "Titan Motors", "type": "purchase_pattern", "status": "Pending", "amount": 51000 }
+]
