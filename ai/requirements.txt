@@ -1,0 +1,3 @@
+  livekit-agents
+  livekit-plugins-noise-cancellation
+  python-dotenv
